@@ -1,5 +1,5 @@
 # SeekerLibrary
 
-##Authors
+## Authors
 - Andrea Maurice De Guzman
 - Ma. Ariela Larosa
