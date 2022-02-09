@@ -8,9 +8,10 @@ class Notes extends Component {
   render() {
   return (
     <View style={ styles.container }>
-      
-      
-      <ScrollView style={ styles.scroll }/>
+      <ScrollView style={ styles.scroll }></ScrollView>
+      <View style={ styles.add }>
+        <Ionicons name='ios-add' size={40} color={ 'gray' } style={ styles.icon }/>
+      </View>
     </View>
   );
   }
@@ -31,6 +32,15 @@ const styles = StyleSheet.create({
   },
   scroll: {
     flex: 3,
+  },
+  add: {
+    width: 75,
+    height: 75,
+    borderRadius: 50,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
+    margin: 20,
   }
-
 });

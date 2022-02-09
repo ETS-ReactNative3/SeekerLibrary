@@ -10,7 +10,7 @@ class Settings extends Component {
     <ScrollView style={ styles.container }>
     <View style={ styles.box }><Text style={ styles.text }>Reading Preferences</Text></View>
     <View style={ styles.box }><Text style={ styles.text }>Dark Mode</Text></View>
-    <View style={ styles.box }><Text style={ styles.text }>Log out</Text></View>
+    <View style={ styles.box }><Text style={ styles.logout }>Log out</Text></View>
     <View style={ styles.header }>
       <Text style={ styles.headtext }>About the app</Text>
       <About />
@@ -52,5 +52,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-  }
+  },
+  logout: {
+    fontSize: 16,
+    color: 'red',
+  },
 });
