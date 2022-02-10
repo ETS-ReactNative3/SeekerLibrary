@@ -13,7 +13,25 @@
 - Firebase
 
 ## 💉 Installation
+> Run the following commands to your terminal:
+
 1. Clone the repository
    ```
     git clone https://github.com/AndreaMaurice/SeekerLibrary.git
+   ```
+2. Install the dependencies
+   ```
+   npm install
+   ```
+3. Install Expo Go or Android Studio
+   > Than using the web to test your app, using emulators are better and accurate.
+
+4. Start the project
+   > Either of the two can be used.
+   ```
+   expo start
+   ```
+   or
+   ```
+   npm start
    ```
