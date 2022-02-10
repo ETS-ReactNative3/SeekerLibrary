@@ -13,7 +13,7 @@
 - Firebase
 
 ## 💉 Installation
-> Run the following commands to your terminal:
+> Run the following commands on your terminal:
 
 1. Clone the repository
    ```
