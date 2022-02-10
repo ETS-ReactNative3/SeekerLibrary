@@ -14,6 +14,6 @@
 
 ## 💉 Installation
 1. Clone the repository
-    '''
-    https://github.com/AndreaMaurice/SeekerLibrary
-    '''
+   ```
+    git clone https://github.com/AndreaMaurice/SeekerLibrary.git
+   ```
