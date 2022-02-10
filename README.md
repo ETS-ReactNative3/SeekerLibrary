@@ -9,7 +9,7 @@
 ## 🎮 Technologies
 - React Native
 - Expo Vector Icons (Ionics)
-- React Native Navivgation (Stack & Tabs)
+- React Native Navigation (Stack & Tabs)
 - Firebase
 
 ## 💉 Installation
