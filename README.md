@@ -1,4 +1,4 @@
-# 🏴‍☠️ SeekerLibrary 🏴‍☠️
+# 🏴‍☠️ SeekerLibrary 2022 🏴‍☠️
 > A project requirement for the subject Application Development 2 of BSIS 3 2nd Semester. This Mobile App Library is intended for La Verdad Christian College, Apalit, Pampanga.
 
 ## 🧩 Features
