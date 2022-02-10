@@ -11,3 +11,9 @@
 - Expo Vector Icons (Ionics)
 - React Native Navivgation (Stack & Tabs)
 - Firebase
+
+## 💉 Installation
+1. Clone the repository
+    '''
+    https://github.com/AndreaMaurice/SeekerLibrary
+    '''
