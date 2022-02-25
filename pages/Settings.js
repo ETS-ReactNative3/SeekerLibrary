@@ -1,12 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons } from '@expo/vector-icons';
-import { Button } from 'react-native-elements/dist/buttons/Button';
 
 import About from '../components/About';
 import { auth } from '../firebase';
-import { useNavigation } from '@react-navigation/native';
 
 class Settings extends Component {
 
@@ -16,8 +14,7 @@ class Settings extends Component {
     auth
     .signOut()
     .then(() => {
-      console.log('Signed out')
-      
+      console.log("logged out")
     })
     .catch(error => alert(error.message))
   }
