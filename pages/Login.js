@@ -83,7 +83,7 @@ class Login extends Component {
     return (
       <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <View  style={styles.upperContainer}>
-          <StatusBar backgroundColor = "#b3e6ff" barStyle = "dark-content" hidden = {false} translucent = {false} />
+          <StatusBar backgroundColor = "#57A7FF" barStyle = "dark-content" hidden = {false} translucent = {false} />
           <Image source={require('../assets/pictures/1.png')} style = { styles.pic }/>
           <Text style={styles.title}>SEEKER</Text>
           <Gradient text='LIBRARY' style={styles.lib}/>
