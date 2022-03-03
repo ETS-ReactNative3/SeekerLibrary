@@ -1,0 +1,126 @@
+{
+    "general" : [
+        {
+            "id": 1,
+            "name": "Generalities",
+            "picture":"https://github.com/AndreaMaurice/SeekerStorage/raw/main/generalities.png",
+            "bg": "#ccbbff"
+        },
+        {
+            "id": 2,
+            "name": "Philosophy & Psychology",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/philosophy.png",
+            "bg": "#ccddff"
+        },
+        {
+            "id": 3,
+            "name": "Religion",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/religion.png",
+            "bg": "#ccffff"
+        },
+        {
+            "id": 4,
+            "name": "Social Sciences",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/social.png",
+            "bg": "#cceedd"
+        },
+        {
+            "id": 5,
+            "name": "Languages",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/language.png",
+            "bg": "#ffffee"
+        },
+        {
+            "id": 6,
+            "name": "Natural Science",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/natural.png",
+            "bg": "#ffeedd"
+        },
+        {
+            "id": 7,
+            "name": "Applied Science",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/applied.png",
+            "bg": "#ffdddd"
+        },
+        {
+            "id": 8,
+            "name": "Arts & Recreation",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/artb.png",
+            "bg": "#ffccdd"
+        },
+        {
+            "id": 9,
+            "name": "Literature",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/literature.png",
+            "bg": "#ffbbee"
+        },
+        {
+            "id": 10,
+            "name": "Geography & History",
+            "picture": "https://github.com/AndreaMaurice/SeekerStorage/raw/main/geography.png",
+            "bg": "#ffddff"
+        }
+    ],
+
+    "special": [
+        {
+            "name": "ACT",
+            "bg": "#"
+        },
+        {
+            "name": "BAB",
+            "bg": "#"
+        },
+        {
+            "name": "BACM",
+            "bg": "#"
+        },
+        {
+            "name": "BSA",
+            "bg": "#"
+        },
+        {
+            "name": "BSAIS",
+            "bg": "#"
+        },
+        {
+            "name": "BSIS",
+            "bg": "#"
+        },
+        {
+            "name": "BSSW",
+            "bg": "#"
+        },
+        {
+            "name": "HCS",
+            "bg": "#"
+        },
+        {
+            "name": "IC",
+            "bg": "#"
+        },
+        {
+            "name": "OM",
+            "bg": "#"
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

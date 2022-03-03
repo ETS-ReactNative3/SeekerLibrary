@@ -10,7 +10,7 @@ class Card extends Component {
                     <Text style={ styles.title }>{this.props.title}</Text>
                 </View>
                 <View style={ styles.right }>
-                    <Image source={this.props.url} style = {{width: 130, height : 70}}/>
+                    <Image source={this.props.url} style = {{width: 100, height : 100}}/>
                 </View>  
             </View>
         );

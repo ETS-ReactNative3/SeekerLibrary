@@ -1,70 +1,59 @@
-import { useNavigation } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import React, { Component } from 'react';
-import { StyleSheet, Dimensions, TextInput, View, TouchableOpacity, Image, Text, KeyboardAvoidingView, Platform} from 'react-native';
-import { auth } from '../firebase';
-import AppLoading from 'expo-app-loading';
-import * as Font from 'expo-font';
+import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  Dimensions,
+  TextInput,
+  View,
+  TouchableOpacity,
+  Image,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { auth } from "../firebase";
 
-import Gradient from '../components/GradientText';
-import Svg, { Path } from 'react-native-svg';
-
-let customFonts = {
-  'Poppins-Bold': 'https://github.com/AndreaMaurice/SeekerStorage/raw/main/Poppins-Bold.ttf',
-  'Poppins-Regular': 'https://github.com/AndreaMaurice/SeekerStorage/raw/main/Poppins-Regular.ttf',
-  'Major-Mono': 'https://github.com/googlefonts/majormono/raw/master/fonts/MajorMonoDisplay-Regular.ttf',
-};
-
+import Gradient from "../components/GradientText";
+import Svg, { Path } from "react-native-svg";
 
 class Login extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      email: '',
-      password: '',
-      fontsLoaded: false,
-      keyboardStatus: undefined,
-    }
-  }
-  async _loadFontsAsync() {
-    await Font.loadAsync(customFonts);
-    this.setState({ fontsLoaded: true });
+      email: "",
+      password: "",
+    };
   }
 
-  componentDidMount() {
-    this._loadFontsAsync();
-  }
-
-
-  navigation = useNavigation
+  navigation = useNavigation;
 
   handleSignup = () => {
     auth
-    .createUserWithEmailAndPassword(this.state.email, this.state.password)
-    .then(UserCredentials => {
-      const user = UserCredentials.user;
-      console.log('Registered with:', user.email);
-    })
-    .catch(error => alert(error.message))
-  }
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((UserCredentials) => {
+        const user = UserCredentials.user;
+        console.log("Registered with:", user.email);
+      })
+      .catch((error) => alert(error.message));
+  };
 
   handleLogin = () => {
     auth
-    .signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then(UserCredentials => {
-      const user = UserCredentials.user;
-      console.log('Logged in with:', user.email);
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then((UserCredentials) => {
+        const user = UserCredentials.user;
+        console.log("Logged in with:", user.email);
 
-        const unsubscribe = auth.onAuthStateChanged(user => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
           if (user) {
-            this.props.navigation.navigate('Home')
+            this.props.navigation.navigate("Home");
           }
-        })
-        return unsubscribe
-    })
-    .catch(error => alert(error.message))
-  }
-
+        });
+        return unsubscribe;
+      })
+      .catch((error) => alert(error.message));
+  };
 
   /*encrypt_password = () => {
     var temp = Base64.encode(this.state.Password_Holder);
@@ -75,61 +64,73 @@ class Login extends Component {
     this.setState({ update_data: temp2 });
   }*/
 
-  
   render() {
-    if (!this.state.fontsLoaded) {
-      return <AppLoading />;
-    }
     return (
-      <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-        <View  style={styles.upperContainer}>
-          <StatusBar backgroundColor = "#57A7FF" barStyle = "dark-content" hidden = {false} translucent = {false} />
-          <Image source={require('../assets/pictures/1.png')} style = { styles.pic }/>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <View style={styles.upperContainer}>
+          <StatusBar
+            backgroundColor="#57A7FF"
+            barStyle="dark-content"
+            hidden={false}
+            translucent={false}
+          />
+          <Image
+            source={require("../assets/pictures/1.png")}
+            style={styles.pic}
+          />
           <Text style={styles.title}>SEEKER</Text>
-          <Gradient text='LIBRARY' style={styles.lib}/>
+          <Gradient text="LIBRARY" style={styles.lib} />
         </View>
-        
-        <View  style={styles.lowerContainer}>
-        <View style={ styles.clickables }>
-          <View style={ styles.inputContainer }>
+
+        <View style={styles.lowerContainer}>
+          <View style={styles.clickables}>
+            <View style={styles.inputContainer}>
               <TextInput
-                style={ styles.input }
+                style={styles.input}
                 placeholder="Email"
-                onChangeText={text => this.setState({ email: text })}
+                onChangeText={(text) => this.setState({ email: text })}
               />
             </View>
-            <View style={ styles.inputContainer }>
+            <View style={styles.inputContainer}>
               <TextInput
-                style={ styles.input }
+                style={styles.input}
                 placeholder="Password"
-                onChangeText={text => this.setState({ password: text })}
+                onChangeText={(text) => this.setState({ password: text })}
                 underlineColorAndroid="transparent"
                 secureTextEntry={true}
               />
             </View>
             <TouchableOpacity>
-              <Text style={ styles.text }>Forgot Password?</Text>
-            </TouchableOpacity>
-
-          <TouchableOpacity
-                style={[ styles.buttonContainer, { backgroundColor: '#6eb5ff', marginTop: 20} ]}
-                onPress= {this.handleLogin}
-            >
-              <Text style={ styles.button }>Log In</Text>
+              <Text style={styles.text}>Forgot Password?</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-                style={ styles.buttonContainer }
-                onPress= {this.handleSignup}
+              style={[
+                styles.buttonContainer,
+                { backgroundColor: "#6eb5ff", marginTop: 20 },
+              ]}
+              onPress={this.handleLogin}
             >
-              <Text style={[ styles.button, { color:'#9a9a9a'} ]}>Register</Text>
+              <Text style={styles.button}>Log In</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={this.handleSignup}
+            >
+              <Text style={[styles.button, { color: "#9a9a9a" }]}>
+                Register
+              </Text>
             </TouchableOpacity>
           </View>
-            <Svg
+          <Svg
             height="130%"
             width="1000%"
             viewBox="0 0 1440 320"
-            style={ styles.svg }
+            style={styles.svg}
           >
             <Path
               fill="#ffffff"
@@ -137,7 +138,6 @@ class Login extends Component {
             />
           </Svg>
         </View>
-        
       </KeyboardAvoidingView>
     );
   }
@@ -147,77 +147,76 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#57A7FF',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#57A7FF",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  input:{
+  input: {
     height: 50,
     width: 300,
     paddingHorizontal: 10,
-    borderColor: '#e0e0e0',
-    backgroundColor: '#D7EAFF',
+    borderColor: "#e0e0e0",
+    backgroundColor: "#D7EAFF",
     borderWidth: 1,
     borderRadius: 5,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: "Poppins-Regular",
   },
-  inputContainer:{
+  inputContainer: {
     marginVertical: 5,
   },
-  buttonContainer:{
-    alignItems: 'center',
-    justifyContent: 'center',
+  buttonContainer: {
+    alignItems: "center",
+    justifyContent: "center",
     width: 300,
     height: 45,
     borderRadius: 5,
   },
-  button:{
-    fontFamily: 'Poppins-Bold',
-    color: 'white',
+  button: {
+    fontFamily: "Poppins-Bold",
+    color: "white",
     fontSize: 16,
   },
-  title:{
-    fontFamily: 'Major-Mono',
+  title: {
+    fontFamily: "Major-Mono",
     fontSize: 60,
     lineHeight: 50,
-    color: '#ffffff',
+    color: "#ffffff",
   },
   pic: {
-    width: 200, 
-    height : 130,
+    width: 200,
+    height: 130,
   },
   upperContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   lowerContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   clickables: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    alignItems: "center",
+    justifyContent: "flex-end",
     zIndex: 1,
     marginBottom: 30,
   },
   text: {
-    fontFamily: 'Poppins-Regular',
-    color: '#9a9a9a',
+    fontFamily: "Poppins-Regular",
+    color: "#9a9a9a",
   },
   svg: {
     bottom: 0,
-    position: 'absolute',
-    width: Dimensions.get('window').width,
+    position: "absolute",
+    width: Dimensions.get("window").width,
     zIndex: 0,
   },
   lib: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: "Poppins-Regular",
     letterSpacing: 5,
-    color: 'white',
+    color: "white",
     fontSize: 18,
   },
 });
-
