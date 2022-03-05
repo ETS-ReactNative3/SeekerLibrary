@@ -51,6 +51,20 @@ class Content extends Component {
           )}
         />
       </View>
+      <View style={styles.categContainer}>
+        <Text style={ styles.category }>Special Categories</Text>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          horizontal={true}
+          data={categ.special}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={[styles.imageContainer, { backgroundColor: item.bg, height: 50}]}>
+              <Text style={[ styles.categName, {fontSize: 14} ]}>{item.name}</Text>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
       </View>
     );
   }

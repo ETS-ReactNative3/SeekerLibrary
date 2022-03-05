@@ -64,44 +64,54 @@
 
     "special": [
         {
+            "id": 1,
             "name": "ACT",
-            "bg": "#"
+            "bg": "#ffddff"
         },
         {
+            "id": 2,
             "name": "BAB",
-            "bg": "#"
+            "bg": "#ffbbee"
         },
         {
+            "id": 3,
             "name": "BACM",
-            "bg": "#"
+            "bg": "#ffccdd"
         },
         {
+            "id": 4,
             "name": "BSA",
-            "bg": "#"
+            "bg": "#ffdddd"
         },
         {
+            "id": 5,
             "name": "BSAIS",
-            "bg": "#"
+            "bg": "#ffeedd"
         },
         {
+            "id": 6,
             "name": "BSIS",
-            "bg": "#"
+            "bg": "#ffffee"
         },
         {
+            "id": 7,
             "name": "BSSW",
-            "bg": "#"
+            "bg": "#cceedd"
         },
         {
+            "id": 8,
             "name": "HCS",
-            "bg": "#"
+            "bg": "#ccffff"
         },
         {
+            "id": 9,
             "name": "IC",
-            "bg": "#"
+            "bg": "#ccddff"
         },
         {
+            "id": 10,
             "name": "OM",
-            "bg": "#"
+            "bg": "#ccbbff"
         }
     ]
 }
