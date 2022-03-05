@@ -84,7 +84,6 @@ class HomeTitle extends Component {
 class Home extends Component {
   render() {
     return (
-      <NavigationContainer independent={true}>
         <Tab.Navigator
           // tabBarOptions={{ showLabel: false }}
           screenOptions={({ route }) => ({
@@ -124,7 +123,6 @@ class Home extends Component {
           <Tab.Screen name="Notes" component={Notes} />
           <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
-      </NavigationContainer>
     );
   }
 }

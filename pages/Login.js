@@ -47,7 +47,7 @@ class Login extends Component {
 
         const unsubscribe = auth.onAuthStateChanged((user) => {
           if (user) {
-            this.props.navigation.navigate("Home");
+            this.props.navigation.navigate("HomeScreen");
           }
         });
         return unsubscribe;
