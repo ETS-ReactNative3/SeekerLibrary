@@ -12,10 +12,11 @@ class Settings extends Component {
 
   handSignout = () => {
     auth
-    .signOut()
-    .then(() => {
-      console.log("logged out")
-    })
+      .signOut()
+      .then(() => {
+        console.log("Logged out");
+        this.props.navigation.navigate("Login");
+      })
     .catch(error => alert(error.message))
   }
 
