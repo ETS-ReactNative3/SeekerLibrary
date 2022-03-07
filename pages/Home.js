@@ -1,18 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  FlatList,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import Search from "./Search";
 import Collection from "./Collection";
 import Notes from "./Notes";
 import Settings from "./Settings";
-
 import Greetings from "../components/Greetings";
 import Gradient from "../components/GradientText";
-
 import categ from "../categ";
 
 const Tab = createBottomTabNavigator();
@@ -22,47 +26,56 @@ class Content extends Component {
     return (
       <View style={styles.container}>
         <StatusBar
-            backgroundColor="#ffff"
-            barStyle="dark-content"
-            hidden={false}
-            translucent={false}
-          />
+          backgroundColor="#ffff"
+          barStyle="dark-content"
+          hidden={false}
+          translucent={false}
+        />
         <Greetings />
         <View style={styles.categContainer}>
-        <Text style={ styles.category }>General Categories</Text>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          data={categ.general}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={[styles.imageContainer, { backgroundColor: item.bg }]}>
-              <Image
-                source={{ uri: item.picture }}
-                style={{
-                  width: 50,
-                  height: 50,
-                }}
-              />
-              <Text style={ styles.categName }>{item.name}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
-      <View style={styles.categContainer}>
-        <Text style={ styles.category }>Special Categories</Text>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          data={categ.special}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={[styles.imageContainer, { backgroundColor: item.bg, height: 50}]}>
-              <Text style={[ styles.categName, {fontSize: 14} ]}>{item.name}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
+          <Text style={styles.category}>General Categories</Text>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            data={categ.general}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={[styles.imageContainer, { backgroundColor: item.bg }]}
+              >
+                <Image
+                  source={{ uri: item.picture }}
+                  style={{
+                    width: 50,
+                    height: 50,
+                  }}
+                />
+                <Text style={styles.categName}>{item.name}</Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
+        <View style={styles.categContainer}>
+          <Text style={styles.category}>Special Categories</Text>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            data={categ.special}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={[
+                  styles.imageContainer,
+                  { backgroundColor: item.bg, height: 50 },
+                ]}
+              >
+                <Text style={[styles.categName, { fontSize: 14 }]}>
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
       </View>
     );
   }
@@ -82,45 +95,45 @@ class HomeTitle extends Component {
 class Home extends Component {
   render() {
     return (
-        <Tab.Navigator
-          // tabBarOptions={{ showLabel: false }}
-          screenOptions={({ route }) => ({
-            tabBarShowLabel: false,
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
+      <Tab.Navigator
+        // tabBarOptions={{ showLabel: false }}
+        screenOptions={({ route }) => ({
+          tabBarShowLabel: false,
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
 
-              if (route.name === "Home") {
-                iconName = focused ? "ios-home" : "ios-home-outline";
-              } else if (route.name === "Search") {
-                iconName = focused ? "ios-search" : "ios-search-outline";
-              } else if (route.name === "Collection") {
-                iconName = focused ? "ios-book" : "ios-book-outline";
-              } else if (route.name === "Notes") {
-                iconName = focused ? "ios-create" : "ios-create-outline";
-              } else if (route.name === "Settings") {
-                iconName = focused ? "ios-settings" : "ios-settings-outline";
-              }
+            if (route.name === "Home") {
+              iconName = focused ? "ios-home" : "ios-home-outline";
+            } else if (route.name === "Search") {
+              iconName = focused ? "ios-search" : "ios-search-outline";
+            } else if (route.name === "Collection") {
+              iconName = focused ? "ios-book" : "ios-book-outline";
+            } else if (route.name === "Notes") {
+              iconName = focused ? "ios-create" : "ios-create-outline";
+            } else if (route.name === "Settings") {
+              iconName = focused ? "ios-settings" : "ios-settings-outline";
+            }
 
-              // You can return any component that you like here!
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: "#57A7FF",
-            tabBarInactiveTintColor: "gray",
-          })}
-        >
-          <Tab.Screen
-            name="Home"
-            component={Content}
-            options={{
-              headerTitle: "",
-              headerLeft: (props) => <HomeTitle {...props} />,
-            }}
-          />
-          <Tab.Screen name="Search" component={Search} />
-          <Tab.Screen name="Collection" component={Collection} />
-          <Tab.Screen name="Notes" component={Notes} />
-          <Tab.Screen name="Settings" component={Settings} />
-        </Tab.Navigator>
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "#57A7FF",
+          tabBarInactiveTintColor: "gray",
+        })}
+      >
+        <Tab.Screen
+          name="Home"
+          component={Content}
+          options={{
+            headerTitle: "",
+            headerLeft: (props) => <HomeTitle {...props} />,
+          }}
+        />
+        <Tab.Screen name="Search" component={Search} />
+        <Tab.Screen name="Collection" component={Collection} />
+        <Tab.Screen name="Notes" component={Notes} />
+        <Tab.Screen name="Settings" component={Settings} />
+      </Tab.Navigator>
     );
   }
 }
@@ -136,8 +149,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    backgroundColor: "white", 
-    height: Dimensions.get('window').height,
+    backgroundColor: "white",
+    height: Dimensions.get("window").height,
     paddingTop: 10,
     paddingBottom: 20,
   },
@@ -163,11 +176,11 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
     borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
-  categName: {    
-    textAlign: 'center',
+  categName: {
+    textAlign: "center",
     fontSize: 11,
     fontFamily: "Poppins-Regular",
   },
@@ -179,5 +192,4 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingTop: 20,
   },
-  
 });
