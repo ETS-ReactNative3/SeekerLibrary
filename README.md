@@ -19,14 +19,18 @@
    ```
     git clone https://github.com/AndreaMaurice/SeekerLibrary.git
    ```
-2. Install the dependencies
+2. Install Expo CLI (if you dont have)
+   ```
+   npm install --global expo-cli
+   ```
+4. Install the dependencies
    ```
    npm install
    ```
-3. Install Expo Go or Android Studio
+4. Install Expo Go or Android Studio
    > Than using the web to test your app, using emulators are better and accurate.
 
-4. Start the project
+5. Start the project
    > Either of the two can be used.
    ```
    expo start
