@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Settings from './pages/Settings';
 import Search from './pages/Search';
 import Collection from './pages/Collection';
@@ -52,6 +53,7 @@ class App extends Component {
           <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="Collection" component={Collection} />
           <Stack.Screen name="Notes" component={Notes} />
+          <Stack.Screen name="Register" component={Register} />
         </Stack.Navigator>
       </NavigationContainer>
     );

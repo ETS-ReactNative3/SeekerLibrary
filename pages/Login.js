@@ -34,6 +34,7 @@ class Login extends Component {
       .then((UserCredentials) => {
         const user = UserCredentials.user;
         console.log("Registered with:", user.email);
+        
       })
       .catch((error) => alert(error.message));
   };
@@ -119,7 +120,7 @@ class Login extends Component {
 
             <TouchableOpacity
               style={styles.buttonContainer}
-              onPress={this.handleSignup}
+              onPress={() => {this.props.navigation.navigate("Register")}}
             >
               <Text style={[styles.button, { color: "#9a9a9a" }]}>
                 Register
