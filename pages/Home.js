@@ -18,10 +18,12 @@ import Settings from "./Settings";
 import Greetings from "../components/Greetings";
 import Gradient from "../components/GradientText";
 import categ from "../categ";
+import PDFReader from "rn-pdf-reader-js";
 
 const Tab = createBottomTabNavigator();
 
 class Content extends Component {
+
   render() {
     return (
       <View style={styles.container}>
@@ -76,6 +78,11 @@ class Content extends Component {
             )}
           />
         </View>
+        
+        <PDFReader
+          source={{uri: "http://www.africau.edu/images/default/sample.pdf"}}
+        />
+
       </View>
     );
   }
@@ -152,7 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     height: Dimensions.get("window").height,
     paddingTop: 10,
-    paddingBottom: 20,
+    paddingBottom: 100,
   },
   title: {
     fontFamily: "Major-Mono",
