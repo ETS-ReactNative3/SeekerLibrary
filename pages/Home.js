@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+
 import Search from "./Search";
 import Collection from "./Collection";
 import Notes from "./Notes";
@@ -18,6 +20,7 @@ import Settings from "./Settings";
 import Greetings from "../components/Greetings";
 import Gradient from "../components/GradientText";
 import categ from "../categ";
+import Firestore from "./Firestore";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,6 +35,7 @@ class Content extends Component {
           translucent={false}
         />
         <Greetings />
+        <Firestore />
         <View style={styles.categContainer}>
           <Text style={styles.category}>General Categories</Text>
           <FlatList
