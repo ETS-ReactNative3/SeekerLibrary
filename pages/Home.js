@@ -20,6 +20,7 @@ import Greetings from "../components/Greetings";
 import Gradient from "../components/GradientText";
 import categ from "../categ";
 import PDFReader from "rn-pdf-reader-js";
+import Firestore from "./Firestore";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,6 +36,7 @@ class Content extends Component {
           translucent={false}
         />
         <Greetings />
+        <Firestore />
         <View style={styles.categContainer}>
           <Text style={styles.category}>General Categories</Text>
           <FlatList
