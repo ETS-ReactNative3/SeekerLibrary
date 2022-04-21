@@ -1,46 +1,37 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { Ionicons } from '@expo/vector-icons';
+import React, { Component } from "react";
+import { StyleSheet, View, Text, Image, StatusBar } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { Ionicons } from "@expo/vector-icons";
+// import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from "@react-navigation/stack";
+import NoteLists from "../components/NoteLists";
+import AddNote from "../components/AddNote";
+import * as SQLite from "expo-sqlite";
 
+const DB = SQLite.openDatabase("db.db");
+const RootStack = createStackNavigator();
 
 class Notes extends Component {
+  constructor(props) {
+    super(props);
+    this.dbInit();
+    this.state = {
+      items: [],
+    };
+  }
+
+  dbInit() {
+    DB.transaction((tx) => {
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, description TEXT);"
+      );
+    });
+  }
+
   render() {
-  return (
-    <View style={ styles.container }>
-      <ScrollView style={ styles.scroll }></ScrollView>
-      <View style={ styles.add }>
-        <Ionicons name='ios-add' size={40} color={ 'gray' } style={ styles.icon }/>
-      </View>
-    </View>
-  );
+    return (
+      <NoteLists/>
+    );
   }
 }
 export default Notes;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  header: {
-    paddingTop: 15,
-    paddingBottom: 5,
-    paddingHorizontal: 10,
-    borderBottomColor:'#e0e0e0',
-    borderBottomWidth: 1,
-    flex: 1,
-  },
-  scroll: {
-    flex: 3,
-  },
-  add: {
-    width: 75,
-    height: 75,
-    borderRadius: 50,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'flex-end',
-    margin: 20,
-  }
-});

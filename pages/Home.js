@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import Search from "./Search";
 import Collection from "./Collection";
 import Notes from "./Notes";
@@ -43,7 +44,7 @@ class Content extends Component {
             data={categ.general}
             renderItem={({ item }) => (
               <TouchableOpacity
-                style={[styles.imageContainer, { backgroundColor: item.bg }]}
+                style={[styles.imageContainer, { backgroundColor: "#ccddff" }]}
               >
                 <Image
                   source={{ uri: item.picture }}
@@ -68,7 +69,7 @@ class Content extends Component {
               <TouchableOpacity
                 style={[
                   styles.imageContainer,
-                  { backgroundColor: item.bg, height: 50 },
+                  { backgroundColor: "#ccddff", height: 50 },
                 ]}
               >
                 <Text style={[styles.categName, { fontSize: 14 }]}>
@@ -79,9 +80,9 @@ class Content extends Component {
           />
         </View>
         
-        <PDFReader
+        {/* <PDFReader
           source={{uri: "http://www.africau.edu/images/default/sample.pdf"}}
-        />
+        /> */}
 
       </View>
     );
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   categContainer: {
-    paddingLeft: 15,
+    paddingHorizontal: 15,
     paddingTop: 20,
   },
 });
