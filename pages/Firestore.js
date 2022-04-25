@@ -1,50 +1,44 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button, Text, FlatList } from 'react-native';
+import { View, StyleSheet, Text, ScrollView } from 'react-native';
 import { LogBox } from 'react-native';
 
 // import firestore
 import { doc, getDoc } from 'firebase/firestore';
-import { db, getAllBooks } from '../firebase';
+import { db, getAllBooks, totalBooks } from '../firebase';
 
 class Firestore extends Component {
     constructor() {
         super();
         this.state = {
-        book: "",
-        all_books: []
+        books: []
         }
     }
 
-    Read = async () => {
-        const books = doc(db, "books", "0dx2hRB9SonkETleQAfa");
+    async getBooks() {
+        const snapshot = await totalBooks.collection("books").get()
+        const books = snapshot.docs.map(doc => doc.data());
 
-        await getDoc(books)
-        .then((snapshot) => {
-            if (snapshot.exists){
-                this.setState({ book: snapshot.data() })
-            }
-            else{
-                alert("No book found")
-            }
-        })
-        .catch((error) => {
-            alert(error.message)
-        })
+        this.setState({ books });
+    }
+
+    async componentDidMount() {
+        this.getBooks();
     }
 
     render() {
         return(
-            <View>
-                <Button
-                    title='Books'
-                    onPress={this.Read}
-                ></Button>
-                {
+            <ScrollView>
+                { this.state.books.map(book => (
                     <View>
-                        <Text>{this.state.book.author}</Text>
+                        <View>
+                            <Text>{ book.author }</Text>
+                        </View>
+                        <View>
+                            <Text>{ book.title }</Text>
+                        </View>
                     </View>
-                }
-            </View>
+                )) }
+            </ScrollView>
         );
     }
 }
