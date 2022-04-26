@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import {
@@ -36,7 +37,6 @@ class Content extends Component {
           translucent={false}
         />
         <Greetings />
-        <Firestore />
         <View style={styles.categContainer}>
           <Text style={styles.category}>General Categories</Text>
           <FlatList
@@ -82,6 +82,7 @@ class Content extends Component {
           />
         </View>
         
+        <Firestore />
         {/* <PDFReader
           source={{uri: "http://www.africau.edu/images/default/sample.pdf"}}
         /> */}
@@ -98,6 +99,23 @@ class HomeTitle extends Component {
         <Gradient text="SEEKER" style={styles.title} />
         <Text style={styles.lib}>LIBRARY</Text>
       </View>
+    );
+  }
+}
+
+
+
+class AddNoteButton extends Component {
+  constructor(props) {
+    super(props)
+ }
+
+  navigation = useNavigation;
+  render() {
+    return (
+      <TouchableOpacity style={styles.addnote} onPress={() =>  this.props.navigation.navigate("AddNote")}>
+        <Text>Create</Text>
+      </TouchableOpacity>
     );
   }
 }
@@ -141,7 +159,12 @@ class Home extends Component {
         />
         <Tab.Screen name="Search" component={Search} />
         <Tab.Screen name="Collection" component={Collection} />
-        <Tab.Screen name="Notes" component={Notes} />
+        <Tab.Screen name="Notes" component={Notes} 
+          options={{
+            headerTitle: "Notes",
+            headerRight: (props) => <AddNoteButton {...props} />,
+
+        }}/>
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     );
@@ -202,4 +225,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingTop: 20,
   },
+  addnote:{
+    marginRight: 25,
+    backgroundColor: '#57A7FF',
+    padding: 10,
+    borderRadius: 5,
+    color: 'white',
+  }
 });

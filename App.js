@@ -16,6 +16,8 @@ import AddNote from "./components/AddNote";
 
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
+import { Touchable } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 let customFonts = {
    'Poppins-Bold': 'https://github.com/AndreaMaurice/SeekerStorage/raw/main/Poppins-Bold.ttf',
@@ -24,6 +26,8 @@ let customFonts = {
 };
 
 const Stack = createStackNavigator();
+
+
 
 class App extends Component {
    constructor() {
@@ -48,16 +52,24 @@ class App extends Component {
       }
       return (
          <NavigationContainer> 
-            <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
-               <Stack.Screen name="HomeScreen" component={Home} />
-               <Stack.Screen name="Login" component={Login} />
-               <Stack.Screen name="Settings" component={Settings} />
-               <Stack.Screen name="Search" component={Search} />
-               <Stack.Screen name="Collection" component={Collection} />
-               <Stack.Screen name="Notes" component={Notes} />
-               <Stack.Screen name="Register" component={Register} />
-               <Stack.Screen name="NoteLists" component={NoteLists} />
-               <Stack.Screen name="AddNote" component={AddNote} />
+            <Stack.Navigator initialRouteName="Login">
+            <Stack.Group screenOptions={{headerShown: false}}>
+                  <Stack.Screen name="Login" component={Login} />
+                  <Stack.Screen name="Register" component={Register} />
+               </Stack.Group>
+               <Stack.Group screenOptions={{headerShown: false}}>
+                  <Stack.Screen name="HomeScreen" component={Home} />
+                  <Stack.Screen name="Settings" component={Settings} />
+                  <Stack.Screen name="Search" component={Search} />
+                  <Stack.Screen name="Collection" component={Collection} />
+                  <Stack.Screen name="Notes" component={Notes} 
+                      
+                  />
+               </Stack.Group>
+               <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                  <Stack.Screen name="NoteLists" component={NoteLists} />
+                  <Stack.Screen name="AddNote" component={AddNote} />
+               </Stack.Group>
             </Stack.Navigator>
          </NavigationContainer>
       );

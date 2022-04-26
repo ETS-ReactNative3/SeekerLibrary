@@ -13,7 +13,8 @@ import {
   Platform,
 } from "react-native";
 import { auth } from "../firebase";
-
+import { doc, setDoc, collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import Gradient from "../components/GradientText";
 import Svg, { Path } from "react-native-svg";
 
@@ -21,10 +22,14 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
+      name: "",
       email: "",
       password: "",
     };
   }
+
+
+
 
   navigation = useNavigation;
 
@@ -38,7 +43,14 @@ class Register extends Component {
         alert("Account created successfully");
       })
       .catch((error) => alert(error.message));
-  };
+
+      const docRef = addDoc(collection(db, "users"), {
+        "name": this.state.name,
+        "email": this.state.email,
+        "password": this.state.password
+      });
+      console.log("Document written with ID: ", docRef.id);
+      };
 
   render() {
     return (
@@ -63,6 +75,13 @@ class Register extends Component {
 
         <View style={styles.lowerContainer}>
           <View style={styles.clickables}>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.input}
+                placeholder="Name"
+                onChangeText={(text) => this.setState({ name: text })}
+              />
+            </View>
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.input}

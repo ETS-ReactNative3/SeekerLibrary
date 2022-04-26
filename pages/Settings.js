@@ -23,26 +23,21 @@ class Settings extends Component {
   render() {
   return (
     <ScrollView style={ styles.container }>
-    <View style={ styles.box }><Text style={ styles.text }>Reading Preferences</Text></View>
-    <View style={ styles.box }><Text style={ styles.text }>Dark Mode</Text></View>
-    <View style={ styles.header }>
-      <Text style={ styles.headtext }>About the app</Text>
-      <About />
-    </View>
+      <View style={ styles.header }>
+        <Text style={ styles.headtext }>Account</Text>
+      </View>
+      <View style={ styles.box }>
+        <Text style={ styles.text }>Email: {auth.currentUser?.email}</Text>
+      </View>
+      <TouchableOpacity onPress={this.handSignout}>
+        <View style={ styles.box }><Text style={ styles.logout }>Log out</Text></View>
+      </TouchableOpacity>
 
-    <View style={ styles.header }>
-      <Text style={ styles.headtext }>Account</Text>
-    </View>
-
-    <View style={ styles.box }>
-      <Text style={ styles.text }>Email: {auth.currentUser?.email}</Text>
-    </View>
-
-    <TouchableOpacity
-      onPress={this.handSignout}
-    >
-      <View style={ styles.box }><Text style={ styles.logout }>Log out</Text></View>
-    </TouchableOpacity>
+      <View style={ styles.header }>
+        <Text style={ styles.headtext }>About the app</Text>
+        <About />
+      </View>
+   
     </ScrollView>
   );
   }
