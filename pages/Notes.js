@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
 
 class Notes extends Component {
+
   render() {
   return (
     <View style={ styles.container }>
