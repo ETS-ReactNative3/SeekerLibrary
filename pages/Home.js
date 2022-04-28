@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import {
@@ -12,7 +13,6 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-
 import Search from "./Search";
 import Collection from "./Collection";
 import Notes from "./Notes";
@@ -20,11 +20,13 @@ import Settings from "./Settings";
 import Greetings from "../components/Greetings";
 import Gradient from "../components/GradientText";
 import categ from "../categ";
+import PDFReader from "rn-pdf-reader-js";
 import Firestore from "./Firestore";
 
 const Tab = createBottomTabNavigator();
 
 class Content extends Component {
+
   render() {
     return (
       <View style={styles.container}>
@@ -35,7 +37,6 @@ class Content extends Component {
           translucent={false}
         />
         <Greetings />
-        <Firestore />
         <View style={styles.categContainer}>
           <Text style={styles.category}>General Categories</Text>
           <FlatList
@@ -45,7 +46,7 @@ class Content extends Component {
             data={categ.general}
             renderItem={({ item }) => (
               <TouchableOpacity
-                style={[styles.imageContainer, { backgroundColor: item.bg }]}
+                style={[styles.imageContainer, { backgroundColor: "#ccddff" }]}
               >
                 <Image
                   source={{ uri: item.picture }}
@@ -70,7 +71,7 @@ class Content extends Component {
               <TouchableOpacity
                 style={[
                   styles.imageContainer,
-                  { backgroundColor: item.bg, height: 50 },
+                  { backgroundColor: "#ccddff", height: 50 },
                 ]}
               >
                 <Text style={[styles.categName, { fontSize: 14 }]}>
@@ -80,6 +81,12 @@ class Content extends Component {
             )}
           />
         </View>
+        
+        <Firestore />
+        {/* <PDFReader
+          source={{uri: "http://www.africau.edu/images/default/sample.pdf"}}
+        /> */}
+
       </View>
     );
   }
@@ -92,6 +99,23 @@ class HomeTitle extends Component {
         <Gradient text="SEEKER" style={styles.title} />
         <Text style={styles.lib}>LIBRARY</Text>
       </View>
+    );
+  }
+}
+
+
+
+class AddNoteButton extends Component {
+  constructor(props) {
+    super(props)
+ }
+
+  navigation = useNavigation;
+  render() {
+    return (
+      <TouchableOpacity style={styles.addnote} onPress={() =>  this.props.navigation.navigate("AddNote")}>
+        <Text>Create</Text>
+      </TouchableOpacity>
     );
   }
 }
@@ -135,7 +159,12 @@ class Home extends Component {
         />
         <Tab.Screen name="Search" component={Search} />
         <Tab.Screen name="Collection" component={Collection} />
-        <Tab.Screen name="Notes" component={Notes} />
+        <Tab.Screen name="Notes" component={Notes} 
+          options={{
+            headerTitle: "Notes",
+            headerRight: (props) => <AddNoteButton {...props} />,
+
+        }}/>
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     );
@@ -156,7 +185,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     height: Dimensions.get("window").height,
     paddingTop: 10,
-    paddingBottom: 20,
+    paddingBottom: 100,
   },
   title: {
     fontFamily: "Major-Mono",
@@ -193,7 +222,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   categContainer: {
-    paddingLeft: 15,
+    paddingHorizontal: 15,
     paddingTop: 20,
   },
+  addnote:{
+    marginRight: 25,
+    backgroundColor: '#57A7FF',
+    padding: 10,
+    borderRadius: 5,
+    color: 'white',
+  }
 });
