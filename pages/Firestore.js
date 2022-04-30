@@ -15,7 +15,7 @@ class Firestore extends Component {
     }
 
     async getBooks() {
-        const snapshot = await totalBooks.collection("books").get()
+        const snapshot = await totalBooks.collection("books").where("category", "==", "Languages").get()
         const books = snapshot.docs.map(doc => doc.data());
 
         this.setState({ books });
@@ -23,6 +23,10 @@ class Firestore extends Component {
 
     async componentDidMount() {
         this.getBooks();
+    }
+
+    async componentWillUnmount() {
+        this.getBooks = false;
     }
 
     render() {
@@ -35,6 +39,9 @@ class Firestore extends Component {
                         </View>
                         <View>
                             <Text>{ book.title }</Text>
+                        </View>
+                        <View>
+                            <Text>{ book.category }</Text>
                         </View>
                     </View>
                 )) }
