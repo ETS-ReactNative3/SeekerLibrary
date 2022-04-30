@@ -21,6 +21,7 @@ import Greetings from "../components/Greetings";
 import Gradient from "../components/GradientText";
 import categ from "../categ";
 import PDFReader from "rn-pdf-reader-js";
+import Firestore from "./Firestore";
 
 const Tab = createBottomTabNavigator();
 
