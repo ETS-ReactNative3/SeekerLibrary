@@ -19,7 +19,6 @@ import Notes from "./Notes";
 import Settings from "./Settings";
 import Greetings from "../components/Greetings";
 import Gradient from "../components/GradientText";
-import categ from "../categ";
 import PDFReader from "rn-pdf-reader-js";
 import Firestore from "./Firestore";
 
@@ -38,51 +37,9 @@ class Content extends Component {
         />
         <Greetings />
         <View style={styles.categContainer}>
-          <Text style={styles.category}>General Categories</Text>
           <Firestore />
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-            data={categ.general}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                style={[styles.imageContainer, { backgroundColor: "#ccddff" }]}
-              >
-                <Image
-                  source={{ uri: item.picture }}
-                  style={{
-                    width: 50,
-                    height: 50,
-                  }}
-                />
-                <Text style={styles.categName}>{item.name}</Text>
-              </TouchableOpacity>
-            )}
-          />
         </View>
-        <View style={styles.categContainer}>
-          <Text style={styles.category}>Special Categories</Text>
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-            data={categ.special}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                style={[
-                  styles.imageContainer,
-                  { backgroundColor: "#ccddff", height: 50 },
-                ]}
-              >
-                <Text style={[styles.categName, { fontSize: 14 }]}>
-                  {item.name}
-                </Text>
-              </TouchableOpacity>
-            )}
-          />
-        </View>
-        
+      
         {/* <PDFReader
           source={{uri: "http://www.africau.edu/images/default/sample.pdf"}}
         /> */}

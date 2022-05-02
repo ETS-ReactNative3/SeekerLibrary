@@ -10,30 +10,42 @@ class Firestore extends Component {
     constructor() {
         super();
         this.state = {
-        books: []
+        bsis: [],
+        bab: []
         }
     }
 
-    async getBooks() {
-        const snapshot = await totalBooks.collection("books").where("category", "==", "Languages").get()
-        const books = snapshot.docs.map(doc => doc.data());
+    async getBsis() {
+        const snapshot = await totalBooks.collection("books").where("category", "==", "BSIS").get()
+        const bsis = snapshot.docs.map(doc => doc.data());
 
-        this.setState({ books });
+        this.setState({ bsis });
+    }
+
+    async getBab() {
+        const snapshot = await totalBooks.collection("books").where("category", "==", "BAB").get()
+        const bab = snapshot.docs.map(doc => doc.data());
+
+        this.setState({ bab });
     }
 
     async componentDidMount() {
-        this.getBooks();
+        this.getBsis();
+        this.getBab();
     }
 
     async componentWillUnmount() {
-        this.getBooks = false;
+        this.getBsis = false;
+        this.getBab = false;
     }
 
     render() {
         return(
-            <ScrollView>
-                { this.state.books.map(book => (
-                    <View>
+            <View>
+                <ScrollView>
+                <Text style={{fontSize:30, fontStyle:"bold"}}>BSIS</Text>
+                { this.state.bsis.map(book => (
+                    <View style={{borderBottomWidth:30, borderBottomColor:"white"}}> 
                         <View>
                             <Text>{ book.author }</Text>
                         </View>
@@ -46,6 +58,23 @@ class Firestore extends Component {
                     </View>
                 )) }
             </ScrollView>
+            <ScrollView>
+                <Text style={{fontSize:30, fontStyle:"bold"}}>BAB</Text>
+                { this.state.bab.map(book => (
+                    <View style={{borderBottomWidth:30, borderBottomColor:"white"}}> 
+                        <View>
+                            <Text>{ book.author }</Text>
+                        </View>
+                        <View>
+                            <Text>{ book.title }</Text>
+                        </View>
+                        <View>
+                            <Text>{ book.category }</Text>
+                        </View>
+                    </View>
+                )) }
+            </ScrollView>
+            </View>
         );
     }
 }
