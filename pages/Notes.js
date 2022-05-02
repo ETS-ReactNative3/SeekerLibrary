@@ -1,8 +1,8 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Image, StatusBar } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
-import { createStackNavigator } from "@react-navigation/stack";
 import { doc, setDoc, collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 

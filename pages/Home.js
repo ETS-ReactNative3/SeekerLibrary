@@ -106,14 +106,21 @@ class HomeTitle extends Component {
 
 
 class AddNoteButton extends Component {
-  constructor(props) {
-    super(props)
- }
 
   navigation = useNavigation;
+
+  createNote = () => {
+    this.props.navigation.navigate("Login");
+  }
+
   render() {
     return (
-      <TouchableOpacity style={styles.addnote} onPress={() =>  this.props.navigation.navigate("AddNote")}>
+      <TouchableOpacity 
+        style={styles.addnote} 
+        onPress={() =>
+          this.createNote()
+        }
+      >
         <Text>Create</Text>
       </TouchableOpacity>
     );
