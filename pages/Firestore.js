@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { LogBox } from 'react-native';
 
 // import firestore
 import { doc, getDoc } from 'firebase/firestore';
 import { db, getAllBooks, totalBooks } from '../firebase';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class Firestore extends Component {
     constructor() {
         super();
         this.state = {
         bsis: [],
-        bab: []
+        bab: [],
+        url: "",
         }
     }
 
     async getBsis() {
         const snapshot = await totalBooks.collection("books").where("category", "==", "BSIS").get()
         const bsis = snapshot.docs.map(doc => doc.data());
-
+        
         this.setState({ bsis });
     }
 
     async getBab() {
         const snapshot = await totalBooks.collection("books").where("category", "==", "BAB").get()
         const bab = snapshot.docs.map(doc => doc.data());
+        // this.setState({ url: doc.thumbnail });
 
         this.setState({ bab });
     }
@@ -43,35 +46,33 @@ class Firestore extends Component {
         return(
             <View>
                 <ScrollView>
-                <Text style={{fontSize:30, fontStyle:"bold"}}>BSIS</Text>
+                <Text style={{fontSize: 24, fontWeight: "bold"}}>BSIS</Text>
                 { this.state.bsis.map(book => (
-                    <View style={{borderBottomWidth:30, borderBottomColor:"white"}}> 
-                        <View>
-                            <Text>{ book.author }</Text>
-                        </View>
-                        <View>
-                            <Text>{ book.title }</Text>
-                        </View>
-                        <View>
-                            <Text>{ book.category }</Text>
-                        </View>
+                    <TouchableOpacity style={styles.bookContainer}> 
+                    <View style={styles.imgContainer}>
+
                     </View>
+                    <View style={styles.textContainer}>
+                        <Text>{ book.title }</Text>
+                        <Text>{ book.author }</Text>
+                        <Text>{ book.category }</Text>
+                    </View>
+                </TouchableOpacity>
                 )) }
             </ScrollView>
             <ScrollView>
-                <Text style={{fontSize:30, fontStyle:"bold"}}>BAB</Text>
+                <Text style={{fontSize: 24, fontWeight: "bold"}}>BAB</Text>
                 { this.state.bab.map(book => (
-                    <View style={{borderBottomWidth:30, borderBottomColor:"white"}}> 
-                        <View>
-                            <Text>{ book.author }</Text>
+                    <TouchableOpacity style={styles.bookContainer}> 
+                        <View style={styles.imgContainer}>
+                            
                         </View>
-                        <View>
+                        <View style={styles.textContainer}>
                             <Text>{ book.title }</Text>
-                        </View>
-                        <View>
+                            <Text>{ book.author }</Text>
                             <Text>{ book.category }</Text>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 )) }
             </ScrollView>
             </View>
@@ -80,3 +81,14 @@ class Firestore extends Component {
 }
 
 export default Firestore;
+
+const styles = StyleSheet.create({
+    bookContainer: {
+     borderBottomWidth:30,
+     borderBottomColor:"blue",
+     backgroundColor: 'yellow',
+    },
+    img: {
+        width: 100,
+    }
+})
