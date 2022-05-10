@@ -25,7 +25,20 @@ class Register extends Component {
       name: "",
       email: "",
       password: "",
+      id: this.firestoreAutoId()
     };
+  }
+
+  firestoreAutoId = () => {
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let autoId = ''
+  
+    for (let i = 0; i < 20; i++) {
+      autoId += CHARS.charAt(
+        Math.floor(Math.random() * CHARS.length)
+      )
+    }
+    return autoId
   }
 
   navigation = useNavigation;
@@ -44,7 +57,8 @@ class Register extends Component {
       const docRef = addDoc(collection(db, "users"), {
         "name": this.state.name,
         "email": this.state.email,
-        "password": this.state.password
+        "password": this.state.password,
+        "id": this.state.id,
       });
       console.log("Document written with ID: ", docRef.id);
       };

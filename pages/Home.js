@@ -5,9 +5,6 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
-  FlatList,
-  TouchableOpacity,
   Dimensions,
   ScrollView,
 } from "react-native";
@@ -30,11 +27,11 @@ class Content extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <View style={styles.gradientbg}>
+        <View style={styles.greetings}>
           <Greetings/>
         </View>
         <View style={styles.categContainer}>
-          <Firestore />
+          <Firestore style={styles.firestore}/>
         </View>
       
         {/* <PDFReader
@@ -124,7 +121,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    backgroundColor: "white",
+    backgroundColor: "#57A7FF",
     height: Dimensions.get("window").height,
     paddingBottom: 100,
   },
@@ -142,7 +139,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignItems: "center",
-    marginLeft: 10,
+    marginLeft: 25,
   },
   imageContainer: {
     width: 90,
@@ -165,10 +162,13 @@ const styles = StyleSheet.create({
   categContainer: {
     paddingHorizontal: 15,
     paddingTop: 20,
+    borderTopStartRadius: 25,
+    borderTopEndRadius: 25,
+    backgroundColor: '#F6F6F6',
   },
-  gradientbg:{
+  greetings:{
     backgroundColor: '#57A7FF',
     paddingTop: 10,
-    paddingBottom: 20,
+    paddingBottom: 15,
   },
 });

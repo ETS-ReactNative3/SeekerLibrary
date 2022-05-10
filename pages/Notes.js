@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image, StatusBar, TextInput } from "react-nativ
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
 import { doc, setDoc, collection, addDoc, getDocs } from "firebase/firestore";
-import { db, totalBooks } from "../firebase";
+import { db, totalDB } from "../firebase";
 import { createStackNavigator } from '@react-navigation/stack';
 import { auth } from "../firebase";
 
@@ -38,7 +38,7 @@ class ReadNote extends Component {
   }
 
   async getNotes() {
-    const snapshot = await totalBooks.collection("notes").where("email", "==", this.state.email).get()
+    const snapshot = await totalDB.collection("notes").where("email", "==", this.state.email).get()
     const notes = snapshot.docs.map(doc => doc.data());
     
     this.setState({ notes });
@@ -76,7 +76,20 @@ class CreateNote extends Component {
       title: "",
       note: "",
       currentDate: "",
+      id: this.firestoreAutoId()
     };
+  }
+
+  firestoreAutoId = () => {
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let autoId = ''
+  
+    for (let i = 0; i < 20; i++) {
+      autoId += CHARS.charAt(
+        Math.floor(Math.random() * CHARS.length)
+      )
+    }
+    return autoId
   }
 
   componentDidMount() {
@@ -98,7 +111,8 @@ class CreateNote extends Component {
       title: this.state.title,
       note: this.state.note,
       email: auth.currentUser?.email,
-      created_at: this.state.currentDate
+      created_at: this.state.currentDate,
+      id: this.state.id
     });
     this.props.navigation.navigate("NotesListings");
   };
@@ -121,7 +135,8 @@ class CreateNote extends Component {
         />
         </View>
         <View>
-          <TouchableOpacity style={styles.button}
+          <TouchableOpacity 
+            style={styles.button}
             onPress={this.create}
           >
             <Text style={styles.textButton}>Save</Text>

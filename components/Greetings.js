@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Image, Text, Dimensions } from "react-native";
+import { auth } from "../firebase";
+import { totalDB } from "../firebase";
+import Gradient from "../components/GradientText";
 
 class Greetings extends Component {
   constructor() {
     super();
     this.state = {
       hour: null,
+      username: [],
     };
   }
 
   componentDidMount() {
     this.getHour();
+    this.getUserName();
+  }
+
+  async componentWillUnmount() {
+    this.getUsername = false;
   }
 
   getHour = () => {
@@ -19,63 +28,101 @@ class Greetings extends Component {
     this.setState({ hour });
   };
 
+  async getUserName() {
+    const snapshot = await totalDB.collection("users").where("email", "==", auth.currentUser?.email).get();
+    const username = snapshot.docs.map((doc) => doc.data());
+    this.setState({ username });
+  }
+
   render() {
     const { hour } = this.state;
-    
-    if (hour === 0 || hour < 6){
-        return(
-            <View style={ styles.container }>
-              <Image source={require('../assets/pictures/dawn.png')} style={ styles.image }/>
-              <Text style={ styles.text }>Good Morning!</Text>
-            </View>
-        );
-    } else if (hour === 1 || hour < 12){
-        return (
-            <View style={ styles.container }>
-              <Image source={require('../assets/pictures/morning.png')} style={ styles.image }/>
-              <Text style={ styles.text }>Good Morning!</Text>
-            </View>
-          );
-    } else if (hour === 2 || hour < 18){
-        return (
-            <View style={ styles.container }>
-              <Image source={require('../assets/pictures/afternoon.png')} style={ styles.image }/>
-              <Text style={ styles.text }>Good Afternoon!</Text>
-            </View>
-          );
+
+    if (hour === 0 || hour < 6) {
+      return (
+        <View style={styles.container}>
+          {/* <Image source={require('../assets/pictures/dawn.png')} style={ styles.image }/> */}
+          {this.state.username.map((info) => (
+            <>
+            <Text style={styles.text}>
+              Hi, {info.name}
+            </Text>
+              <Gradient text="Good morning!" style={styles.greet}/>
+            </>
+          ))}
+        </View>
+      );
+    } else if (hour === 1 || hour < 12) {
+      return (
+        <View style={styles.container}>
+          {/* <Image source={require('../assets/pictures/morning.png')} style={ styles.image }/> */}
+          {this.state.username.map((info) => (
+            <>
+            <Text style={styles.text}>
+              Hi, {info.name}
+            </Text>
+              <Gradient text="Good morning!" style={styles.greet}/>
+            </>
+          ))}
+        </View>
+      );
+    } else if (hour === 2 || hour < 18) {
+      return (
+        <View style={styles.container}>
+          {/* <Image source={require('../assets/pictures/afternoon.png')} style={ styles.image }/> */}
+          {this.state.username.map((info) => (
+            <>
+            <Text style={styles.text}>
+              Hi, {info.name}
+            </Text>
+              <Gradient text="Good afternoon!" style={styles.greet}/>
+            </>
+          ))}
+        </View>
+      );
     } else {
-        return (
-            <View style={ styles.container }>
-              <Image source={require('../assets/pictures/night.png')} style={ styles.image }/>
-              <Text style={ styles.text }>Good Evening!</Text>
-            </View>
-          );
+      return (
+        <View style={styles.container}>
+          {/* <Image source={require('../assets/pictures/night.png')} style={ styles.image }/> */}
+          {this.state.username.map((info) => (
+            <>
+            <Text style={styles.text}>
+              Hi, {info.name}
+            </Text>
+              <Gradient text="Good evening!" style={styles.greet}/>
+            </>
+          ))}
+        </View>
+      );
     }
   }
 }
 export default Greetings;
 
 const styles = StyleSheet.create({
-    container: {
-        width: Dimensions.get("window").width,
-        height: 100,
-        padding: 20,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    image: {
-        width: '100%',
-        height: 100,
-        zIndex: 0,
-        position: 'absolute',
-        opacity: 0.75,
-        borderRadius: 5,
-    },
-    text: {
-        top: 0,
-        zIndex: 1,
-        color: 'black',
-        fontFamily: 'Poppins-Bold',
-        fontSize: 24,
-    },
+  container: {
+    width: Dimensions.get("window").width,
+    height: 100,
+    paddingLeft: 30,
+    // alignItems: "center",
+    justifyContent: 'center',
+  },
+  image: {
+    width: "100%",
+    height: 100,
+    zIndex: 0,
+    position: "absolute",
+    opacity: 0.75,
+    borderRadius: 5,
+  },
+  greet: {
+    color: "white",
+    fontFamily: "Poppins-Bold",
+    fontSize: 24,
+    lineHeight: 28,
+  },
+  text: {
+    color: "white",
+    fontFamily: "Poppins-Regular",
+    fontSize: 18,
+  }
 });

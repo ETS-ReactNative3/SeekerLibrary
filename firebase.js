@@ -28,6 +28,6 @@ if (firebase.apps.length === 0) {
 const auth = firebase.auth();
 
 export const db = getFirestore(app); 
-export const totalBooks = firebase.firestore();
+export const totalDB = firebase.firestore();
 
 export { auth };
