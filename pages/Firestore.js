@@ -10,71 +10,109 @@ class Firestore extends Component {
     constructor() {
         super();
         this.state = {
-        bsis: [],
-        bab: []
+            gen: [],
+            philPsy: [],
+            rel: [],
+            SocSci: [],
+            Lang: [],
+            NatSci: [],
+            AppSci: [],
+            ArtsRec: [],
+            Lit: [],
+            GeoHis: [],
         }
     }
 
-    async getBsis() {
-        const snapshot = await totalBooks.collection("books").where("category", "==", "BSIS").get()
-        const bsis = snapshot.docs.map(doc => doc.data());
+    async getGen() {
+        const snapshot = await totalBooks.collection("books").where("category", "==", "Generalities").get()
+        const gen = snapshot.docs.map(doc => doc.data());
 
-        this.setState({ bsis });
+        this.setState({ gen });
     }
 
-    async getBab() {
-        const snapshot = await totalBooks.collection("books").where("category", "==", "BAB").get()
-        const bab = snapshot.docs.map(doc => doc.data());
+    async getPhilPsy() {
+        const snapshot = await totalBooks.collection("books").where("category", "==", "Philosophy & Psychology").get()
+        const philPsy = snapshot.docs.map(doc => doc.data());
 
-        this.setState({ bab });
+        this.setState({ philPsy });
     }
+
+    async getRel() {
+        const snapshot = await totalBooks.collection("books").where("category", "==", "Religion").get()
+        const rel = snapshot.docs.map(doc => doc.data());
+
+        this.setState({ rel });
+    }
+
 
     async componentDidMount() {
-        this.getBsis();
-        this.getBab();
+        this.getGen();
+        this.getPhilPsy();
+        this.getRel();
     }
 
     async componentWillUnmount() {
-        this.getBsis = false;
-        this.getBab = false;
+        this.getGen = false;
+        this.getPhilPsy = false;
+        this.getRel = false;
     }
 
     render() {
         return(
-            <View>
-                <ScrollView>
-                <Text style={{fontSize:30, fontStyle:"bold"}}>BSIS</Text>
-                { this.state.bsis.map(book => (
-                    <View style={{borderBottomWidth:30, borderBottomColor:"white"}}> 
-                        <View>
-                            <Text>{ book.author }</Text>
+            <ScrollView style={{marginBottom:25}}>
+                <View>
+                    <Text style={{fontSize:30, fontWeight:"bold"}}>General Categories</Text>
+                    <Text style={{fontSize:25}}>Generalities</Text>
+                    { this.state.gen.map(book => (
+                        <View style={{marginBottom:20}}> 
+                            <View>
+                                <Text>{ book.author }</Text>
+                            </View>
+                            <View>
+                                <Text>{ book.title }</Text>
+                            </View>
+                            <View>
+                                <Text>{ book.category }</Text>
+                            </View>
                         </View>
-                        <View>
-                            <Text>{ book.title }</Text>
+                    )) }
+                </View>
+
+                <View>
+                    <Text style={{fontSize:25}}>Philosophy & Psychology</Text>
+                    { this.state.philPsy.map(book => (
+                        <View style={{borderBottomWidth:30, borderBottomColor:"white"}}> 
+                            <View>
+                                <Text>{ book.author }</Text>
+                            </View>
+                            <View>
+                                <Text>{ book.title }</Text>
+                            </View>
+                            <View>
+                                <Text>{ book.category }</Text>
+                            </View>
                         </View>
-                        <View>
-                            <Text>{ book.category }</Text>
+                    )) }
+                </View>
+
+                <View>
+                    <Text style={{fontSize:25}}>Religion</Text>
+                    { this.state.rel.map(book => (
+                        <View style={{borderBottomWidth:30, borderBottomColor:"white"}}> 
+                            <View>
+                                <Text>{ book.author }</Text>
+                            </View>
+                            <View>
+                                <Text>{ book.title }</Text>
+                            </View>
+                            <View>
+                                <Text>{ book.category }</Text>
+                            </View>
                         </View>
-                    </View>
-                )) }
+                    )) }
+                </View>
+
             </ScrollView>
-            <ScrollView>
-                <Text style={{fontSize:30, fontStyle:"bold"}}>BAB</Text>
-                { this.state.bab.map(book => (
-                    <View style={{borderBottomWidth:30, borderBottomColor:"white"}}> 
-                        <View>
-                            <Text>{ book.author }</Text>
-                        </View>
-                        <View>
-                            <Text>{ book.title }</Text>
-                        </View>
-                        <View>
-                            <Text>{ book.category }</Text>
-                        </View>
-                    </View>
-                )) }
-            </ScrollView>
-            </View>
         );
     }
 }
