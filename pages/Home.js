@@ -9,6 +9,7 @@ import {
   FlatList,
   TouchableOpacity,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -28,14 +29,10 @@ class Content extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar
-          backgroundColor="#ffff"
-          barStyle="dark-content"
-          hidden={false}
-          translucent={false}
-        />
-        <Greetings />
+      <ScrollView style={styles.container}>
+        <View style={styles.gradientbg}>
+          <Greetings/>
+        </View>
         <View style={styles.categContainer}>
           <Firestore />
         </View>
@@ -44,7 +41,7 @@ class Content extends Component {
           source={{uri: "http://www.africau.edu/images/default/sample.pdf"}}
         /> */}
 
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -53,26 +50,15 @@ class HomeTitle extends Component {
   render() {
     return (
       <View style={styles.logo}>
+        <StatusBar
+            backgroundColor="#57A7FF"
+            barStyle="dark-content"
+            hidden={false}
+            translucent={false}
+          />
         <Gradient text="SEEKER" style={styles.title} />
         <Text style={styles.lib}>LIBRARY</Text>
       </View>
-    );
-  }
-}
-
-
-
-class AddNoteButton extends Component {
-  constructor(props) {
-    super(props)
- }
-
-  navigation = useNavigation;
-  render() {
-    return (
-      <TouchableOpacity style={styles.addnote} onPress={() =>  this.props.navigation.navigate("AddNote")}>
-        <Text>Create</Text>
-      </TouchableOpacity>
     );
   }
 }
@@ -83,6 +69,10 @@ class Home extends Component {
       <Tab.Navigator
         // tabBarOptions={{ showLabel: false }}
         screenOptions={({ route }) => ({
+          tabBarStyle: {backgroundColor: "#57A7FF"},
+          headerStyle: {
+            backgroundColor: "#57A7FF",
+          },
           tabBarShowLabel: false,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -102,8 +92,8 @@ class Home extends Component {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: "#57A7FF",
-          tabBarInactiveTintColor: "gray",
+          tabBarActiveTintColor: "white",
+          tabBarInactiveTintColor: "#3d3d3d",
         })}
       >
         <Tab.Screen
@@ -116,12 +106,7 @@ class Home extends Component {
         />
         <Tab.Screen name="Search" component={Search} />
         <Tab.Screen name="Collection" component={Collection} />
-        <Tab.Screen name="Notes" component={Notes} 
-          options={{
-            headerTitle: "Notes",
-            headerRight: (props) => <AddNoteButton {...props} />,
-
-        }}/>
+        <Tab.Screen name="Notes" component={Notes} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     );
@@ -141,7 +126,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
     height: Dimensions.get("window").height,
-    paddingTop: 10,
     paddingBottom: 100,
   },
   title: {
@@ -153,7 +137,7 @@ const styles = StyleSheet.create({
   lib: {
     fontFamily: "Poppins-Regular",
     letterSpacing: 5,
-    color: "black",
+    color: "white",
     fontSize: 10,
   },
   logo: {
@@ -182,11 +166,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingTop: 20,
   },
-  addnote:{
-    marginRight: 25,
+  gradientbg:{
     backgroundColor: '#57A7FF',
-    padding: 10,
-    borderRadius: 5,
-    color: 'white',
-  }
+    paddingTop: 10,
+    paddingBottom: 20,
+  },
 });

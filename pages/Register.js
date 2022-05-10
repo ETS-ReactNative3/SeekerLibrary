@@ -28,9 +28,6 @@ class Register extends Component {
     };
   }
 
-
-
-
   navigation = useNavigation;
 
   handleSignup = () => {
