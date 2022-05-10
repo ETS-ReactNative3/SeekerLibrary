@@ -3,8 +3,6 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
-import Firestore from "./Firestore";
-
 
 class Collection extends Component {
   render() {
