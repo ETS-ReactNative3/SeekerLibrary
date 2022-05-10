@@ -29,6 +29,10 @@ class Register extends Component {
     };
   }
 
+  componentDidMount() {
+    this.firestoreAutoId();
+  }
+
   firestoreAutoId = () => {
     const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     let autoId = ''

@@ -104,9 +104,9 @@ class Login extends Component {
                 secureTextEntry={true}
               />
             </View>
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={styles.text}>Forgot Password?</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity
               style={[

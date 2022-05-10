@@ -103,6 +103,7 @@ class CreateNote extends Component {
       currentDate: month + '/' + date + '/'+ year 
       + ' ' + hours + ':' + min + ':' + sec
     });
+    this.firestoreAutoId();
   }
 
   // CRUD Functions

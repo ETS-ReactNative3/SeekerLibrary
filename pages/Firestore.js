@@ -294,7 +294,7 @@ async getGeo() {
                 <Image source={{ uri: book.thumbnail }} style={styles.img} />
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.title}>{book.title}</Text>
+                <Text multiline={true} style={styles.title}>{book.title}</Text>
                 <Text style={styles.author}>{book.author}</Text>
                 <Text>{book.category}</Text>
               </View>
@@ -616,11 +616,11 @@ container: {
     height: 100,
   },
   textContainer: {
-    paddingHorizontal: 15,
+    paddingLeft: 15,
+    paddingRight: 100,
   },
   title: {
     fontWeight: "bold",
-    fontSize: 16,
   },
   author: {
     fontStyle: "italic",
