@@ -11,8 +11,6 @@ import Settings from './pages/Settings';
 import Search from './pages/Search';
 import Collection from './pages/Collection';
 import Notes from './pages/Notes';
-import NoteLists from "./components/NoteLists";
-import AddNote from "./components/AddNote";
 
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
@@ -62,13 +60,7 @@ class App extends Component {
                   <Stack.Screen name="Settings" component={Settings} />
                   <Stack.Screen name="Search" component={Search} />
                   <Stack.Screen name="Collection" component={Collection} />
-                  <Stack.Screen name="Notes" component={Notes} 
-                      
-                  />
-               </Stack.Group>
-               <Stack.Group screenOptions={{ presentation: 'modal' }}>
-                  <Stack.Screen name="NoteLists" component={NoteLists} />
-                  <Stack.Screen name="AddNote" component={AddNote} />
+                  <Stack.Screen name="Notes" component={Notes} />
                </Stack.Group>
             </Stack.Navigator>
          </NavigationContainer>
