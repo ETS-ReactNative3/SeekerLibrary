@@ -201,7 +201,6 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   notesContainer: {
-    // backgroundColor: 'white',
     flex: 1,
     paddingHorizontal: 15,
     paddingTop: 20,
@@ -246,8 +245,6 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   noteContainer: {
-    // borderWidth: 1,
-    // borderColor: '#bbbbbb',
     backgroundColor: 'white',
     borderRadius: 5,
     paddingHorizontal: 15,
@@ -262,7 +259,7 @@ const styles = StyleSheet.create({
     color: '#4d4d4d',
   },
   listDate: {
-    // fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Regular',
     color: '#c0c0c0',
   },
 });

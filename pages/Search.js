@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-
+import { totalDB } from "../firebase";
 
 class Search extends Component {
   render() {
@@ -16,7 +16,7 @@ class Search extends Component {
           />
           <Ionicons name='ios-search' size={25} color={ 'gray' } style={ styles.icon }/>
         </View>
-      </View>
+      </View> 
       
     </ScrollView>
   );
