@@ -7,7 +7,6 @@ import { doc, setDoc, collection, addDoc, getDocs } from "firebase/firestore";
 import { db, totalDB } from "../firebase";
 import { createStackNavigator } from '@react-navigation/stack';
 import { auth } from "../firebase";
-
 import { EventRegister } from 'react-native-event-listeners'
 
 const Stack = createStackNavigator();
