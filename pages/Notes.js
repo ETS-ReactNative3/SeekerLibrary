@@ -50,7 +50,7 @@ class ReadNote extends Component {
     this.setState({ notes });
   }
 
-  async update() {
+  update() {
     this.listener = EventRegister.addEventListener('makeNote', (data) => {
       this.getNotes();
     })

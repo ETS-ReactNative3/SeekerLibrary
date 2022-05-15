@@ -7,7 +7,7 @@ class PDFViewer extends Component {
         let params = this.props.route.params;
         console.log(params)
       return(
-          <View>
+          <View style={styles.pdf}>
               <PDFReader
                     source={{uri: params.pdf.url}}
                 />

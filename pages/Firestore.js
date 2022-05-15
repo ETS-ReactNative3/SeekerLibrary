@@ -75,7 +75,7 @@ export default class Firestore extends Component {
   async getLanguage() {
     const snapshot = await totalDB
       .collection("books")
-      .where("category", "==", "Language")
+      .where("category", "==", "Languages")
       .get();
     const lang = snapshot.docs.map((doc) => doc.data());
     this.setState({ lang });
