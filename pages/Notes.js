@@ -64,7 +64,7 @@ class ReadNote extends Component {
           <View style={styles.textContainer}>
               <Text style={styles.listTitle}>{ note.title }</Text>
               <Text style={styles.listNote}>{ note.note }</Text>
-              <Text styles={styles.listDate}>{ note.created_at }</Text>
+              <Text style={styles.listDate}>{ note.created_at }</Text>
           </View>
       </TouchableOpacity>
       )) }
@@ -255,12 +255,14 @@ const styles = StyleSheet.create({
   },
   listTitle: {
     fontFamily: 'Poppins-Bold',
+    fontSize: 16,
   },
   listNote: {
     fontFamily: 'Poppins-Regular',
+    color: '#4d4d4d',
   },
   listDate: {
-    fontFamily: 'Poppins-Regular',
-    color: '#bbbbbb',
-  }
+    // fontFamily: 'Poppins-Regular',
+    color: '#c0c0c0',
+  },
 });
