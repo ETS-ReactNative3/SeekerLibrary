@@ -11,7 +11,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
-import Search from "./Search";
+import SearchNav from "./Search";
 import Collection from "./Collection";
 import Notes from "./Notes";
 import Settings from "./Settings";
@@ -98,7 +98,7 @@ class Home extends Component {
             headerLeft: (props) => <HomeTitle {...props} />,
           }}
         />
-        <Tab.Screen name="Search" component={Search} />
+        <Tab.Screen name="Search" component={SearchNav} />
         <Tab.Screen name="Collection" component={Collection} />
         <Tab.Screen name="Notes" component={Notes} />
         <Tab.Screen name="Settings" component={Settings} />

@@ -1,22 +1,42 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, TextInput, Image, Dimensions, TouchableOpacity, Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import { totalDB } from "../firebase";
-import { TouchableOpacity } from 'react-native-web';
+import PDFViewer from "../components/PDFViewer";
+
+export default class SearchNav extends Component {
+  render(){
+    return(
+      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Search">
+      <Stack.Screen
+        name="Search"
+        component={Search}
+      />
+      <Stack.Screen
+        name="PDFViewer"
+        component={PDFViewer}
+      />
+    </Stack.Navigator>
+    );
+  }
+}
 
 class Search extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       book: [],
+      title: '',
     };
   }
 
   async componentDidMount(){
     this.update();
-    this.getNotes();
+  }
+
+  async componentWillMount(){
+    this.getBook();
   }
 
   async getBook() {
@@ -39,9 +59,17 @@ class Search extends Component {
           <TextInput 
             style={ styles.input }
             placeholder="Search a book"
+            onChangeText={(text)=>{this.setState({ title: text })}}
+            onSubmitEditing = {this.getBook}
+            value = {this.state.title}
           />
-          <TouchableOpacity style={styles.searchButton}>
-            <Ionicons name='ios-search' size={25} color={ '#57A7FF' } style={ styles.icon }/>
+          <TouchableOpacity style={styles.searchButton}
+            onPress={
+              
+              this.getBook}
+          >
+            <Ionicons name='ios-search' size={25} color={ '#ffff' } style={ styles.icon }/>
+            <Text style={styles.searchText}>Search</Text>
           </TouchableOpacity>
           
         </View>
@@ -51,7 +79,6 @@ class Search extends Component {
   );
   }
 }
-export default Search;
 
 const styles = StyleSheet.create({
   container: {
@@ -71,24 +98,25 @@ const styles = StyleSheet.create({
     flex: 3,
   },
   search: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    // justifyContent: 'space-between',
+  },
+  input: {
+    padding: 10,
+    paddingHorizontal: 15,
+    margin: 5,
+    flex: 1,
+    color: '#57A7FF',
+    fontFamily: 'Poppins-Regular',
     height: 50,
-    width: Dimensions.get("window").width - 50,
+    width: Dimensions.get("window").width - 150,
     backgroundColor: '#fff',
     borderColor: '#e0e0e0',
     borderWidth: 1,
     borderRadius: 5,
-    justifyContent: 'space-between',
-    flex: 1,
-    flexDirection: 'row',
-    paddingHorizontal: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    padding: 10,
-    flex: 1,
-    color: '#57A7FF',
-    fontFamily: 'Poppins-Regular',
   },
   center: {
     alignItems: 'center',
@@ -97,9 +125,19 @@ const styles = StyleSheet.create({
   },
   icon: {
     // flex: 1,
-    padding: 5,
+      marginRight: 5,
   },
   searchButton: {
-
+    backgroundColor: '#57A7FF',
+    height: 50,
+    borderRadius: 5,
+    width: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  searchText: {
+    fontFamily: 'Poppins-Regular',
+    color: '#ffff',
   },
 });
