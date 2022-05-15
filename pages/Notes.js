@@ -170,7 +170,6 @@ class Notes extends Component {
         component={CreateNote}
       />
     </Stack.Navigator>
-
     );
   }
 }
@@ -181,6 +180,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     padding: 15,
+    backgroundColor: '#F6F6F6',
   },
   touch: {
     justifyContent: 'flex-end',
@@ -254,6 +254,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 15,
     paddingVertical: 15,
+    marginVertical: 2.5,
   },
   listTitle: {
     fontFamily: 'Poppins-Bold',

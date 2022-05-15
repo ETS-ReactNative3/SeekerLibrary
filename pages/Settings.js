@@ -47,7 +47,7 @@ export default Settings;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F6F6F6',
     paddingHorizontal: 20,
   },
   header: {

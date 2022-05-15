@@ -1,10 +1,36 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput, Image } from 'react-native';
+import { StyleSheet, View, TextInput, Image, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import { totalDB } from "../firebase";
+import { TouchableOpacity } from 'react-native-web';
 
 class Search extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      book: [],
+    };
+  }
+
+  async componentDidMount(){
+    this.update();
+    this.getNotes();
+  }
+
+  async getBook() {
+    const snapshot = await totalDB.collection("books").where("title", "==", this.state.title).get()
+    const book = snapshot.docs.map(doc => doc.data());
+    EventRegister.emit('searchBook', 'it works!!!');
+    this.setState({ book });
+  }
+
+  async update() {
+    this.listener = EventRegister.addEventListener('searchBook', (data) => {
+      this.getBook();
+    })
+  }
   render() {
   return (
     <ScrollView style={ styles.container }>
@@ -14,7 +40,10 @@ class Search extends Component {
             style={ styles.input }
             placeholder="Search a book"
           />
-          <Ionicons name='ios-search' size={25} color={ 'gray' } style={ styles.icon }/>
+          <TouchableOpacity style={styles.searchButton}>
+            <Ionicons name='ios-search' size={25} color={ '#57A7FF' } style={ styles.icon }/>
+          </TouchableOpacity>
+          
         </View>
       </View> 
       
@@ -28,6 +57,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    backgroundColor: '#F6F6F6',
   },
   header: {
     paddingTop: 15,
@@ -41,27 +71,35 @@ const styles = StyleSheet.create({
     flex: 3,
   },
   search: {
-    height: 40,
-    width: 300,
+    height: 50,
+    width: Dimensions.get("window").width - 50,
     backgroundColor: '#fff',
     borderColor: '#e0e0e0',
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 5,
     justifyContent: 'space-between',
     flex: 1,
     flexDirection: 'row',
     paddingHorizontal: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   input: {
     padding: 10,
-    // flex: 6,
+    flex: 1,
+    color: '#57A7FF',
+    fontFamily: 'Poppins-Regular',
   },
   center: {
     alignItems: 'center',
-    justifyContent: 'center',  
+    justifyContent: 'center', 
+    // backgroundColor: 'green' ,
   },
   icon: {
     // flex: 1,
     padding: 5,
+  },
+  searchButton: {
+
   },
 });

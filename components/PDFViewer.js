@@ -5,12 +5,14 @@ import PDFReader from "rn-pdf-reader-js";
 class PDFViewer extends Component {
     render(){
         let params = this.props.route.params;
-        console.log(params)
+        // console.log(params)
       return(
-          <View>
-              <PDFReader
-                    source={{uri: params.pdf.url}}
-                />
+          <View style={styles.pdf}>
+              <PDFReader 
+                source={{uri: params.pdf.url}}
+                withScroll={true}
+                withPinchZoom={true}
+              />
           </View>
       );
     }
@@ -21,5 +23,6 @@ export default PDFViewer;
 const styles = StyleSheet.create({
     pdf: {
         height: Dimensions.get("window").height,
+        flex: 1,
     },
 })
