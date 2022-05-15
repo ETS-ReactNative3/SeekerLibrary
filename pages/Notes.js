@@ -8,6 +8,8 @@ import { db, totalDB } from "../firebase";
 import { createStackNavigator } from '@react-navigation/stack';
 import { auth } from "../firebase";
 
+import { EventRegister } from 'react-native-event-listeners'
+
 const Stack = createStackNavigator();
 
 class Content extends Component {
@@ -37,21 +39,23 @@ class ReadNote extends Component {
     };
   }
 
+  async componentDidMount(){
+    this.update();
+    this.getNotes();
+  }
+
   async getNotes() {
     const snapshot = await totalDB.collection("notes").where("email", "==", this.state.email).get()
     const notes = snapshot.docs.map(doc => doc.data());
     
     this.setState({ notes });
-}
+  }
 
-    async componentDidMount(){
+  async update() {
+    this.listener = EventRegister.addEventListener('makeNote', (data) => {
       this.getNotes();
-   
-     }
-   
-     async componentWillUnmount() {
-       this.getNotes = false;
-   }
+    })
+  }
 
   render() {
     return(
@@ -116,6 +120,7 @@ class CreateNote extends Component {
       id: this.state.id
     });
     this.props.navigation.navigate("NotesListings");
+    EventRegister.emit('makeNote', 'it works!!!');
   };
   render() {
     return(
