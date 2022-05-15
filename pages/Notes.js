@@ -13,23 +13,6 @@ import { EventRegister } from 'react-native-event-listeners'
 const Stack = createStackNavigator();
 
 class Content extends Component {
-
-  render() {
-    return(
-    <View style={styles.container}>
-      <ReadNote style={styles.list}/>
-      <View style={styles.touch}>
-        <TouchableOpacity style={styles.add}
-          onPress={()=>{this.props.navigation.navigate('CreateNote')}}> 
-          <Text style={styles.icon}>+</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-    )
-  }
-}
-
-class ReadNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,9 +46,19 @@ class ReadNote extends Component {
 
   render() {
     return(
-    <ScrollView style={styles.list}>
+    <View style={styles.container}>
+      {/* <ReadNote style={styles.list}/> */}
+      <ScrollView style={styles.list}>
       { this.state.notes.map((note, i) => (
-          <TouchableOpacity key={i} style={styles.noteContainer}> 
+          <TouchableOpacity
+            key={i}
+            style={styles.noteContainer}
+            onPress={()=>{this.props.navigation.navigate('CreateNote', {
+              notes: {
+                title: note.title,
+                note: note.note
+              }
+            })}}> 
           <View style={styles.textContainer}>
               <Text style={styles.listTitle}>{ note.title }</Text>
               <Text style={styles.listNote}>{ note.note }</Text>
@@ -74,9 +67,18 @@ class ReadNote extends Component {
       </TouchableOpacity>
       )) }
       </ScrollView>
-    );
+
+      <View style={styles.touch}>
+        <TouchableOpacity style={styles.add}
+          onPress={()=>{this.props.navigation.navigate('CreateNote')}}> 
+          <Text style={styles.icon}>+</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+    )
+  }
 }
-}
+
 class CreateNote extends Component {
   constructor(props) {
     super(props);
