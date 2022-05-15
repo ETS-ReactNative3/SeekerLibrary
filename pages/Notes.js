@@ -67,9 +67,9 @@ class ReadNote extends Component {
       { this.state.notes.map((note, i) => (
           <TouchableOpacity key={i} style={styles.noteContainer}> 
           <View style={styles.textContainer}>
-              <Text>{ note.title }</Text>
-              <Text>{ note.note }</Text>
-              <Text>{ note.created_at }</Text>
+              <Text style={styles.listTitle}>{ note.title }</Text>
+              <Text style={styles.listNote}>{ note.note }</Text>
+              <Text style={styles.listDate}>{ note.created_at }</Text>
           </View>
       </TouchableOpacity>
       )) }
@@ -180,6 +180,7 @@ const styles = StyleSheet.create({
   container:{
     display: 'flex',
     flex: 1,
+    padding: 15,
   },
   touch: {
     justifyContent: 'flex-end',
@@ -250,11 +251,23 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   noteContainer: {
-    borderWidth: 1,
-    borderColor: '#bbbbbb',
-    margin: 5,
+    // borderWidth: 1,
+    // borderColor: '#bbbbbb',
+    backgroundColor: 'white',
     borderRadius: 5,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-  }
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+  },
+  listTitle: {
+    fontFamily: 'Poppins-Bold',
+    fontSize: 16,
+  },
+  listNote: {
+    fontFamily: 'Poppins-Regular',
+    color: '#4d4d4d',
+  },
+  listDate: {
+    // fontFamily: 'Poppins-Regular',
+    color: '#c0c0c0',
+  },
 });
