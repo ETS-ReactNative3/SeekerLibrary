@@ -41,13 +41,13 @@ class Greetings extends Component {
       return (
         <View style={styles.container}>
           {/* <Image source={require('../assets/pictures/dawn.png')} style={ styles.image }/> */}
-          {this.state.username.map((info) => (
-            <>
+          {this.state.username.map((info, i) => (
+            <View key={i}>
             <Text style={styles.text}>
               Hi, {info.name}
             </Text>
               <Gradient text="Good morning!" style={styles.greet}/>
-            </>
+            </View>
           ))}
         </View>
       );
@@ -55,13 +55,13 @@ class Greetings extends Component {
       return (
         <View style={styles.container}>
           {/* <Image source={require('../assets/pictures/morning.png')} style={ styles.image }/> */}
-          {this.state.username.map((info) => (
-            <>
+          {this.state.username.map((info, i) => (
+            <View key={i}>
             <Text style={styles.text}>
               Hi, {info.name}
             </Text>
               <Gradient text="Good morning!" style={styles.greet}/>
-            </>
+            </View>
           ))}
         </View>
       );
@@ -69,13 +69,13 @@ class Greetings extends Component {
       return (
         <View style={styles.container}>
           {/* <Image source={require('../assets/pictures/afternoon.png')} style={ styles.image }/> */}
-          {this.state.username.map((info) => (
-            <>
+          {this.state.username.map((info, i) => (
+            <View key={i}>
             <Text style={styles.text}>
               Hi, {info.name}
             </Text>
               <Gradient text="Good afternoon!" style={styles.greet}/>
-            </>
+              </View>
           ))}
         </View>
       );
@@ -83,13 +83,13 @@ class Greetings extends Component {
       return (
         <View style={styles.container}>
           {/* <Image source={require('../assets/pictures/night.png')} style={ styles.image }/> */}
-          {this.state.username.map((info) => (
-            <>
+          {this.state.username.map((info, i) => (
+            <View key={i}>
             <Text style={styles.text}>
               Hi, {info.name}
             </Text>
               <Gradient text="Good evening!" style={styles.greet}/>
-            </>
+              </View>
           ))}
         </View>
       );
