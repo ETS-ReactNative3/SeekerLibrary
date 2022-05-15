@@ -128,6 +128,7 @@ class CreateNote extends Component {
     EventRegister.emit('makeNote', 'it works!!!');
   };
   render() {
+    let params = this.props.route.params;
     return(
       <View style={styles.notesContainer}>
         <View style={styles.title}>
@@ -135,6 +136,7 @@ class CreateNote extends Component {
           style={styles.inputTitle}
           placeholder="Title"
           onChangeText={(text) => this.setState({ title: text })}
+          value={params.notes.title}
         />
         </View>
         <View style={styles.note}>
@@ -143,6 +145,7 @@ class CreateNote extends Component {
           placeholder="Start Typing"
           multiline={true}
           onChangeText={(text) => this.setState({ note: text })}
+          value={params.notes.note}
         />
         </View>
         <View>
