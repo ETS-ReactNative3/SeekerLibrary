@@ -18,8 +18,7 @@ class Content extends Component {
       <ReadNote style={styles.list}/>
       <View style={styles.touch}>
         <TouchableOpacity style={styles.add}
-          onPress={()=>{this.props.navigation.navigate('CreateNote')}}
-        > 
+          onPress={()=>{this.props.navigation.navigate('CreateNote')}}> 
           <Text style={styles.icon}>+</Text>
         </TouchableOpacity>
       </View>

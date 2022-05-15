@@ -10,35 +10,32 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import { createStackNavigator } from '@react-navigation/stack';
 import Search from "./Search";
 import Collection from "./Collection";
 import Notes from "./Notes";
 import Settings from "./Settings";
 import Greetings from "../components/Greetings";
 import Gradient from "../components/GradientText";
-import PDFReader from "rn-pdf-reader-js";
 import Firestore from "./Firestore";
+import PDFViewer from "../components/PDFViewer";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-class Content extends Component {
-
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        <View style={styles.greetings}>
-          <Greetings/>
-        </View>
-        <View style={styles.categContainer}>
-          <Firestore style={styles.firestore}/>
-        </View>
-      
-        {/* <PDFReader
-          source={{uri: "http://www.africau.edu/images/default/sample.pdf"}}
-        /> */}
-
-      </ScrollView>
+class Navigation extends Component {
+  render(){
+    return(
+      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Firestore">
+      <Stack.Screen
+        name="Firestore"
+        component={Firestore}
+      />
+      <Stack.Screen
+        name="PDFViewer"
+        component={PDFViewer}
+      />
+    </Stack.Navigator>
     );
   }
 }
@@ -95,7 +92,7 @@ class Home extends Component {
       >
         <Tab.Screen
           name="Home"
-          component={Content}
+          component={Navigation}
           options={{
             headerTitle: "",
             headerLeft: (props) => <HomeTitle {...props} />,
@@ -119,11 +116,6 @@ const styles = StyleSheet.create({
     borderBottomColor: "#e0e0e0",
     borderBottomWidth: 1,
     flex: 1,
-  },
-  container: {
-    backgroundColor: "#57A7FF",
-    height: Dimensions.get("window").height,
-    paddingBottom: 100,
   },
   title: {
     fontFamily: "Major-Mono",
@@ -158,17 +150,5 @@ const styles = StyleSheet.create({
   category: {
     fontFamily: "Poppins-Bold",
     fontSize: 16,
-  },
-  categContainer: {
-    paddingHorizontal: 15,
-    paddingTop: 20,
-    borderTopStartRadius: 25,
-    borderTopEndRadius: 25,
-    backgroundColor: '#F6F6F6',
-  },
-  greetings:{
-    backgroundColor: '#57A7FF',
-    paddingTop: 10,
-    paddingBottom: 15,
   },
 });
