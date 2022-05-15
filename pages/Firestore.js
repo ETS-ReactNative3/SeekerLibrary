@@ -280,8 +280,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Generalities</Text>
-            {this.state.gen.map((book) => (
+            {this.state.gen.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -306,8 +307,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Philosophy & Psychology</Text>
-            {this.state.philpsy.map((book) => (
+            {this.state.philpsy.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -330,8 +332,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Religion</Text>
-            {this.state.religion.map((book) => (
+            {this.state.religion.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -354,8 +357,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Social Sciences</Text>
-            {this.state.socsci.map((book) => (
+            {this.state.socsci.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -378,8 +382,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Languages</Text>
-            {this.state.lang.map((book) => (
+            {this.state.lang.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -402,8 +407,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Natural Science</Text>
-            {this.state.natsci.map((book) => (
+            {this.state.natsci.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -426,8 +432,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Applied Science</Text>
-            {this.state.appsci.map((book) => (
+            {this.state.appsci.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -450,8 +457,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Arts & Recreation</Text>
-            {this.state.arts.map((book) => (
+            {this.state.arts.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -474,8 +482,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Literature</Text>
-            {this.state.lit.map((book) => (
+            {this.state.lit.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -498,8 +507,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>Geography & History</Text>
-            {this.state.geohis.map((book) => (
+            {this.state.geohis.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -524,8 +534,9 @@ export default class Firestore extends Component {
           {/* Special Categ */}
           <View style={styles.container}>
             <Text style={styles.categTitle}>ACT</Text>
-            {this.state.act.map((book) => (
+            {this.state.act.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -548,8 +559,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>BAB</Text>
-            {this.state.bab.map((book) => (
+            {this.state.bab.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -572,8 +584,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>BACM</Text>
-            {this.state.bacm.map((book) => (
+            {this.state.bacm.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -596,8 +609,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>BSA</Text>
-            {this.state.bsa.map((book) => (
+            {this.state.bsa.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -620,8 +634,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>BSAIS</Text>
-            {this.state.bsais.map((book) => (
+            {this.state.bsais.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -644,8 +659,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>BSIS</Text>
-            {this.state.bsis.map((book) => (
+            {this.state.bsis.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -668,8 +684,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>BSSW</Text>
-            {this.state.bssw.map((book) => (
+            {this.state.bssw.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -692,8 +709,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>HCS</Text>
-            {this.state.hcs.map((book) => (
+            {this.state.hcs.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -716,8 +734,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>IC</Text>
-            {this.state.ic.map((book) => (
+            {this.state.ic.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {
@@ -740,8 +759,9 @@ export default class Firestore extends Component {
           </View>
           <View style={styles.container}>
             <Text style={styles.categTitle}>OM</Text>
-            {this.state.om.map((book) => (
+            {this.state.om.map((book, i) => (
               <TouchableOpacity
+                key={i}
                 style={styles.bookContainer}
                 onPress={() =>
                   this.props.navigation.navigate("PDFViewer", {

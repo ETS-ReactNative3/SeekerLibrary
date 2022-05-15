@@ -56,11 +56,16 @@ class ReadNote extends Component {
     })
   }
 
+  async componentWillUnmount() {
+    this.getNotes = false;
+    this.update = false;
+  }
+
   render() {
     return(
     <ScrollView style={styles.list}>
-      { this.state.notes.map(note => (
-          <TouchableOpacity style={styles.noteContainer}> 
+      { this.state.notes.map((note, i) => (
+          <TouchableOpacity key={i} style={styles.noteContainer}> 
           <View style={styles.textContainer}>
               <Text style={styles.listTitle}>{ note.title }</Text>
               <Text style={styles.listNote}>{ note.note }</Text>
