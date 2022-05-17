@@ -55,11 +55,10 @@ class Content extends Component {
           <TouchableOpacity
             key={i}
             style={styles.noteContainer}
-            onPress={()=>{this.props.navigation.navigate('CreateNote', {
-              notes: {
+            onPress={()=>{this.props.navigation.navigate('UpdateNote', {
                 title: note.title,
-                note: note.note
-              }
+                note: note.note,
+                id: note.id,
             })}}> 
           <View style={styles.textContainer}>
               <Text style={styles.listTitle}>{ note.title }</Text>
@@ -88,7 +87,7 @@ class CreateNote extends Component {
       title: "",
       note: "",
       currentDate: "",
-      id: this.firestoreAutoId()
+      id: ""
     };
   }
 
@@ -111,11 +110,11 @@ class CreateNote extends Component {
     var hours = new Date().getHours(); //Current Hours
     var min = new Date().getMinutes(); //Current Minutes
     var sec = new Date().getSeconds(); //Current Seconds
+
     this.setState({
       currentDate: month + '/' + date + '/'+ year 
-      + ' ' + hours + ':' + min + ':' + sec
+      + ' ' + hours + ':' + min + ':' + sec,
     });
-    this.firestoreAutoId();
   }
 
   // CRUD Functions
@@ -129,6 +128,7 @@ class CreateNote extends Component {
     });
     this.props.navigation.navigate("NotesListings");
     EventRegister.emit('makeNote', 'it works!!!');
+    console.log("create record");
   };
   render() {
     return(
@@ -161,6 +161,74 @@ class CreateNote extends Component {
   }
 }
 
+class UpdateNote extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      note: "",
+      currentDate: "",
+      id: ""
+    };
+  }
+
+  componentDidMount() {
+    var note = "";
+    var title = "";
+    var id = "";
+
+    if (this.props.route.params && this.props.route.params.id) {
+      id = this.props.route.params.id;
+      title = this.props.route.params.title;
+      note = this.props.route.params.note;
+    }
+
+    this.setState({
+      id, note, title
+    });
+  }
+
+  update = () => {
+    if (this.props.route.params && this.props.route.params.id) {
+      console.log("update record");
+      // update
+    }
+  }
+
+  render() {
+    return(
+      <View style={styles.notesContainer}>
+        <View style={styles.title}>
+        <TextInput
+          value={this.state.title}
+          style={styles.inputTitle}
+          placeholder="Title"
+          onChangeText={(text) => this.setState({ title: text })}
+        />
+        </View>
+        <View style={styles.note}>
+        <TextInput
+          value={this.state.note}
+          style={styles.inputNote}
+          placeholder="Start Typing"
+          multiline={true}
+          onChangeText={(text) => this.setState({ note: text })}
+        />
+        </View>
+        <View>
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={this.update}
+          >
+            <Text style={styles.textButton}>Save</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    )
+  }
+
+}
+
 class Notes extends Component {
   render(){
     return(
@@ -172,6 +240,10 @@ class Notes extends Component {
       <Stack.Screen
         name="CreateNote"
         component={CreateNote}
+      />
+      <Stack.Screen
+        name="UpdateNote"
+        component={UpdateNote}
       />
     </Stack.Navigator>
     );
