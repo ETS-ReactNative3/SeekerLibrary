@@ -200,10 +200,7 @@ export default class Firestore extends Component {
   }
 
   async getIc() {
-    const snapshot = await totalDB
-      .collection("books")
-      .where("category", "==", "IC")
-      .get();
+    const snapshot = await totalDB.collection("books").where("category", "==", "IC").get();
     const ic = snapshot.docs.map((doc) => doc.data());
     this.setState({ ic });
   }
