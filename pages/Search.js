@@ -4,6 +4,9 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import { totalDB } from "../firebase";
 import PDFViewer from "../components/PDFViewer";
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 export default class SearchNav extends Component {
   render(){
@@ -64,14 +67,10 @@ class Search extends Component {
             value = {this.state.title}
           />
           <TouchableOpacity style={styles.searchButton}
-            onPress={
-              
-              this.getBook}
-          >
+            onPress={this.getBook}>
             <Ionicons name='ios-search' size={25} color={ '#ffff' } style={ styles.icon }/>
             <Text style={styles.searchText}>Search</Text>
           </TouchableOpacity>
-          
         </View>
       </View> 
       

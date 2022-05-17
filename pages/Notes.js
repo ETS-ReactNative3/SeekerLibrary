@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Image, StatusBar, TextInput } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
-import { doc, setDoc, collection, addDoc, getDocs } from "firebase/firestore";
+import { doc, setDoc, collection, addDoc, orderBy, getDocs } from "firebase/firestore";
 import { db, totalDB } from "../firebase";
 import { createStackNavigator } from '@react-navigation/stack';
 import { auth } from "../firebase";
@@ -25,8 +25,11 @@ class Content extends Component {
     this.getNotes();
   }
 
+
   async getNotes() {
-    const snapshot = await totalDB.collection("notes").where("email", "==", this.state.email).get()
+    const snapshot = await totalDB.collection("notes")
+    .where("email", "==", this.state.email)
+    .get()
     const notes = snapshot.docs.map(doc => doc.data());
     
     this.setState({ notes });
@@ -47,7 +50,7 @@ class Content extends Component {
     return(
     <View style={styles.container}>
       {/* <ReadNote style={styles.list}/> */}
-      <ScrollView style={styles.list}>
+      <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
       { this.state.notes.map((note, i) => (
           <TouchableOpacity
             key={i}
