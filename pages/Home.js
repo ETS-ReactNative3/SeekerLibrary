@@ -40,6 +40,23 @@ class Navigation extends Component {
   }
 }
 
+class Books extends Component {
+  render(){
+    return(
+      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Firestore">
+      <Stack.Screen
+        name="Collection"
+        component={Collection}
+      />
+      <Stack.Screen
+        name="PDFViewer"
+        component={PDFViewer}
+      />
+    </Stack.Navigator>
+    );
+  }
+}
+
 class HomeTitle extends Component {
   render() {
     return (
@@ -75,7 +92,7 @@ class Home extends Component {
               iconName = focused ? "ios-home" : "ios-home-outline";
             } else if (route.name === "Search") {
               iconName = focused ? "ios-search" : "ios-search-outline";
-            } else if (route.name === "Collection") {
+            } else if (route.name === "Books") {
               iconName = focused ? "ios-book" : "ios-book-outline";
             } else if (route.name === "Notes") {
               iconName = focused ? "ios-create" : "ios-create-outline";
@@ -99,7 +116,7 @@ class Home extends Component {
           }}
         />
         <Tab.Screen name="Search" component={SearchNav} />
-        <Tab.Screen name="Collection" component={Collection} />
+        <Tab.Screen name="Books" component={Books} />
         <Tab.Screen name="Notes" component={Notes} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>

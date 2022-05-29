@@ -29,8 +29,8 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: [],
-      title: '',
+      search: [],
+      input: '',
     };
   }
 
@@ -39,19 +39,19 @@ class Search extends Component {
   }
 
   async componentWillMount(){
-    this.getBook();
+    this.getSearch();
   }
 
-  async getBook() {
-    const snapshot = await totalDB.collection("books").where("title", "==", this.state.title).get()
-    const book = snapshot.docs.map(doc => doc.data());
+  async getSearch() {
+    const snapshot = await totalDB.collection("books").orderBy('title').startAt(this.state.input).endAt(this.state.input + '\uf8ff').get()
+    const search = snapshot.docs.map(doc => doc.data());
     EventRegister.emit('searchBook', 'it works!!!');
-    this.setState({ book });
+    this.setState({ search });
   }
 
   async update() {
     this.listener = EventRegister.addEventListener('searchBook', (data) => {
-      this.getBook();
+      this.getSearch();
     })
   }
   render() {
@@ -62,15 +62,41 @@ class Search extends Component {
           <TextInput 
             style={ styles.input }
             placeholder="Search a book"
-            onChangeText={(text)=>{this.setState({ title: text })}}
-            onSubmitEditing = {this.getBook}
+            onChangeText={(text)=>{this.setState({ input: text })}}
+            onSubmitEditing = {this.getSearch}
             value = {this.state.title}
           />
           <TouchableOpacity style={styles.searchButton}
-            onPress={this.getBook}>
+            onPress={this.getSearch}>
             <Ionicons name='ios-search' size={25} color={ '#ffff' } style={ styles.icon }/>
             <Text style={styles.searchText}>Search</Text>
           </TouchableOpacity>
+        </View>
+        <View>
+        {this.state.search.map((book, i) => (
+              <TouchableOpacity
+                key={i}
+                style={styles.bookContainer}
+                onPress={() =>
+                  this.props.navigation.navigate("PDFViewer", {
+                    pdf: {
+                      url: book.url,
+                    },
+                  })
+                }
+              >
+                <View style={styles.imgContainer}>
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
+                </View>
+                <View style={styles.textContainer}>
+                  <Text multiline={true} style={styles.title}>
+                    {book.title}
+                  </Text>
+                  <Text style={styles.author}>{book.author}</Text>
+                  <Text>{book.category}</Text>
+                </View>
+              </TouchableOpacity>
+            ))}
         </View>
       </View> 
       
