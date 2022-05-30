@@ -290,7 +290,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text multiline={true} style={styles.title}>
@@ -317,7 +317,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -342,7 +342,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -367,7 +367,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -392,7 +392,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -417,7 +417,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -442,7 +442,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -467,7 +467,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -492,7 +492,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -517,7 +517,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -544,7 +544,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -569,7 +569,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -594,7 +594,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -619,7 +619,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -644,7 +644,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -669,7 +669,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -694,7 +694,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -719,7 +719,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -744,7 +744,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
@@ -769,7 +769,7 @@ export default class Firestore extends Component {
                 }
               >
                 <View style={styles.imgContainer}>
-                  <Image source={{ uri: book.thumbnail }} style={styles.img} />
+                  {/* <Image source={{ uri: book.thumbnail }} style={styles.img} /> */}
                 </View>
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{book.title}</Text>
